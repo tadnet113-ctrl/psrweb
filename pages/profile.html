@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - Le Paname Service</title>
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+<link rel="manifest" href="../assets/site.webmanifest">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
+
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Link File CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #667eea;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        .profile-info h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+        
+        .profile-info p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .profile-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .form-section h3 {
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .address-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .address-card.default {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .address-card .address-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .address-card .btn-small {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .address-card .btn-small:hover {
+            color: #667eea;
+        }
+        
+        .order-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .order-number {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .order-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .order-status.confirmée {
+            background: #10b981;
+            color: white;
+        }
+        
+        .order-status.en_attente {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .order-status.expédiée {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .order-status.livrée {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .wishlist-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s;
+        }
+        
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .wishlist-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .wishlist-item-info {
+            padding: 15px;
+        }
+        
+        .wishlist-item-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .wishlist-item-price {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .wishlist-item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-small:hover {
+            background: #f0f0f0;
+        }
+        
+        .loyalty-card {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .loyalty-points {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .loyalty-level {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (inclure le header existant) -->
+    <div id="header-container"></div>
+
+    <div class="profile-container">
+        <!-- En-tête profil -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h1 id="profile-name">Chargement...</h1>
+                <p id="profile-email">email@example.com</p>
+                <p id="profile-phone">+237 XXX XXX XXX</p>
+                <p id="profile-member-since">Membre depuis Janvier 2024</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-orders">0</div>
+                        <div class="stat-label">Commandes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="loyalty-points-display">0</div>
+                        <div class="stat-label">Points fidélité</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="wishlist-count">0</div>
+                        <div class="stat-label">Favoris</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <button class="btn-secondary" onclick="logout()" style="background: #ef4444; color: white;">
+                        <i class="fa-solid fa-sign-out-alt"></i> Se déconnecter
+                    </button>
+                    <button class="btn-secondary" onclick="safeDebug()" style="background: #f59e0b; color: white; margin-left: 10px;">
+                        <i class="fa-solid fa-bug"></i> Debug Profil
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglets -->
+        <div class="profile-tabs">
+            <button class="tab-btn active" data-tab="personal">Informations personnelles</button>
+            <button class="tab-btn" data-tab="addresses">Adresses</button>
+            <button class="tab-btn" data-tab="orders">Mes commandes</button>
+            <button class="tab-btn" data-tab="wishlist">Liste de souhaits</button>
+            <button class="tab-btn" data-tab="loyalty">Fidélité</button>
+        </div>
+
+        <!-- Contenu des onglets -->
+        <div id="personal" class="tab-content active">
+            <div class="form-section">
+                <h3>Informations personnelles</h3>
+                <form id="profile-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full-name">Nom complet</label>
+                            <input type="text" id="full-name" name="full_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="birth-date">Date de naissance</label>
+                            <input type="date" id="birth-date" name="birth_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Genre</label>
+                            <select id="gender" name="gender">
+                                <option value="">Sélectionner</option>
+                                <option value="homme">Homme</option>
+                                <option value="femme">Femme</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        <button type="submit" class="btn-primary">Sauvegarder</button>
+                        <button type="button" class="btn-secondary" onclick="resetProfileForm()">Annuler</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="addresses" class="tab-content">
+            <div class="form-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3>Mes adresses</h3>
+                    <button class="btn-primary" onclick="showAddAddressForm()">+ Ajouter une adresse</button>
+                </div>
+                <div id="addresses-list">
+                    <!-- Les adresses seront chargées ici -->
+                </div>
+            </div>
+        </div>
+
+        <div id="orders" class="tab-content">
+            <div class="form-section">
+                <h3>Historique des commandes</h3>
+                <div id="orders-list">
+                    <!-- Les commandes seront chargées ici -->
+                </div>
+            </div>
+        </div>
+
+        <div id="wishlist" class="tab-content">
+            <div class="form-section">
+                <h3>Ma liste de souhaits</h3>
+                <div id="wishlist-grid" class="wishlist-grid">
+                    <!-- Les produits favoris seront chargés ici -->
+                </div>
+            </div>
+        </div>
+
+        <div id="loyalty" class="tab-content">
+            <div class="loyalty-card">
+                <h3>Mon programme de fidélité</h3>
+                <div class="loyalty-level" id="loyalty-level">Bronze</div>
+                <div class="loyalty-points" id="loyalty-points-total">0</div>
+                <p>points fidélité</p>
+                <p style="margin-top: 20px; opacity: 0.9;">Gagnez des points à chaque achat et bénéficiez d'avantages exclusifs !</p>
+            </div>
+            
+            <div class="form-section">
+                <h3>Historique des points</h3>
+                <div id="points-history">
+                    <!-- L'historique des points sera chargé ici -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (inclure le footer existant) -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        window.SUPABASE_URL = "https://tajecmaqygsassxfkqwp.supabase.co";
+        window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRhamVjbWFxeWdzYXNzeGZrcXdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc0MjU3NDIsImV4cCI6MjA4MzAwMTc0Mn0.rqUwVv6xoLkoLWh3NyTSYelkyWCpM41pUNis8MHaZ-U";
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

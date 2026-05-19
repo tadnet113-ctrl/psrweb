@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Votre panier - Le Paname Service. Consultez et gérez vos articles avant validation de commande.">
+    <meta name="keywords" content="panier, commande, achats, validation, Le Paname Service">
+    <meta name="author" content="Le Paname Service">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Mon Panier - Le Paname Service</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #0a0a0a;
+            --secondary-black: #111111;
+            --dark-gray: #1a1a1a;
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff;
+            --white-off: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+            --text-dark: #212529;
+            --text-gray: #495057;
+            --success: #28a745;
+            --danger: #dc3545;
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+            --gold-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --container-padding: 1rem;
+            --container-max-width: 1280px;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            --border-radius-full: 9999px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            width: 100%;
+        }
+
+        /* Header Top */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid var(--gold);
+        }
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .header-top-message {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+        }
+        .header-top-message i { color: var(--gold); }
+        .header-top-message span { color: var(--gold); font-weight: 700; }
+        .customer-service {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .service-item i { font-size: 0.875rem; color: var(--gold); }
+        .service-info h4 { font-size: 0.625rem; font-weight: 500; opacity: 0.8; }
+        .service-info a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.688rem;
+            transition: var(--transition);
+        }
+        .service-info a:hover { color: var(--gold); }
+
+        /* Header Main */
+        .header-main {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-main .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.75rem var(--container-padding);
+        }
+        .logo { flex-shrink: 0; }
+        .logo a { display: block; }
+        .logo img { 
+            height: 50px; 
+            width: auto; 
+            transition: var(--transition);
+            object-fit: contain;
+        }
+        .logo img:hover { transform: scale(1.02); }
+        .search-wrapper {
+            flex: 1;
+            max-width: 400px;
+        }
+        .search-form {
+            display: flex;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--border-radius-full);
+            overflow: hidden;
+        }
+        .search-form:focus-within {
+            border-color: var(--gold);
+            box-shadow: var(--gold-shadow);
+        }
+        .search-input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: none;
+            outline: none;
+            font-size: 0.875rem;
+        }
+        .search-btn {
+            background: var(--gold-gradient);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .action-btn {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid var(--gray-light);
+            cursor: pointer;
+            color: var(--text-dark);
+            font-size: 1.125rem;
+            text-decoration: none;
+        }
+        .action-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--primary-black);
+            transform: translateY(-2px);
+        }
+        .cart-badge, .wishlist-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            font-size: 0.563rem;
+            font-weight: 800;
+            min-width: 16px;
+            height: 16px;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3px;
+            border: 1px solid var(--white);
+        }
+
+        /* Navigation Desktop */
+        .nav-wrapper {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-light);
+            position: sticky;
+            top: 74px;
+            z-index: 999;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem var(--container-padding);
+        }
+        .main-nav {
+            flex: 1;
+        }
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+        .nav-item {
+            position: relative;
+        }
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold-dark);
+            border-bottom-color: var(--gold);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid var(--gray-light);
+        }
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: block;
+            padding: 0.7rem 1.2rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+        .dropdown-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-dark);
+            padding-left: 1.5rem;
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--gold-gradient);
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            color: var(--primary-black);
+            font-size: 0.875rem;
+            font-weight: 600;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 85%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-lg);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-sidebar.active { left: 0; }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--primary-black);
+            color: var(--gold);
+            position: sticky;
+            top: 0;
+        }
+        .sidebar-header h3 { font-size: 1.125rem; font-family: var(--font-serif); }
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+        .sidebar-search { padding: 1rem; border-bottom: 1px solid var(--gray-light); }
+        .sidebar-nav {
+            flex: 1;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+        .sidebar-nav-item { border-bottom: 1px solid var(--gray-light); }
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.875rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .sidebar-nav-link span { display: flex; align-items: center; gap: 0.75rem; }
+        .sidebar-nav-link span i { width: 24px; color: var(--gold-dark); }
+        .sidebar-nav-link .chevron { font-size: 0.75rem; transition: transform 0.3s ease; }
+        .sidebar-submenu {
+            list-style: none;
+            padding-left: 3rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--white-off);
+        }
+        .sidebar-submenu.active { max-height: 500px; }
+        .sidebar-submenu-link {
+            display: block;
+            padding: 0.7rem 1rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.813rem;
+        }
+        .sidebar-submenu-link:hover { color: var(--gold-dark); padding-left: 1.2rem; }
+        .sidebar-footer {
+            padding: 1rem;
+            border-top: 1px solid var(--gray-light);
+            background: var(--white-off);
+            margin-top: auto;
+        }
+        .sidebar-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            font-size: 0.813rem;
+        }
+        .sidebar-contact-item i { color: var(--gold-dark); width: 20px; }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .overlay.active { opacity: 1; visibility: visible; }
+
+        /* Cart Section */
+        .cart-section {
+            padding: 3rem 0;
+            min-height: 60vh;
+        }
+        .cart-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .cart-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            font-family: var(--font-serif);
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .cart-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold-gradient);
+        }
+        .cart-container {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2rem;
+        }
+        .cart-items {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--gray-light);
+            overflow: hidden;
+        }
+        .cart-items-header {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+            padding: 1rem;
+            background: var(--white-off);
+            font-weight: 600;
+            border-bottom: 1px solid var(--gray-light);
+            font-size: 0.875rem;
+        }
+        .cart-item {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 1fr 0.5fr;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+        .cart-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .cart-item-product {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--white-off);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cart-item-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .cart-item-info p {
+            font-size: 0.7rem;
+            color: var(--gray-medium);
+        }
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--gold-dark);
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .quantity-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--primary-black);
+        }
+        .quantity-input {
+            width: 45px;
+            text-align: center;
+            padding: 0.3rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+        }
+        .cart-item-total {
+            font-weight: 700;
+            color: var(--gold-dark);
+        }
+        .cart-item-remove {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .cart-item-remove:hover {
+            color: var(--danger);
+            transform: scale(1.1);
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+        }
+        .cart-empty i {
+            font-size: 4rem;
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+        .cart-empty h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .cart-empty p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--gray-light);
+            padding: 1.5rem;
+            position: sticky;
+            top: 100px;
+        }
+        .cart-summary h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--gold-dark);
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+        .summary-row.total {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            border-top: 1px solid var(--gray-light);
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+        }
+        .promo-code {
+            margin: 1rem 0;
+        }
+        .promo-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .promo-input input {
+            flex: 1;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+        }
+        .promo-input button {
+            padding: 0.6rem 1rem;
+            background: var(--gold-gradient);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold-gradient);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--gold-shadow);
+        }
+        .payment-methods-summary {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+        .payment-methods-summary p {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+        .payment-icons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .payment-icons img {
+            height: 25px;
+            width: auto;
+            background: var(--white);
+            padding: 0.2rem 0.4rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--gray-light);
+        }
+
+        /* Features */
+        .features-section {
+            padding: 3rem 0;
+            background: var(--white-off);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--gold-shadow);
+            border-color: var(--gold);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .feature-icon i { font-size: 1.5rem; color: var(--primary-black); }
+        .feature-card h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .feature-card p { font-size: 0.688rem; color: var(--gray-medium); }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 3rem 0 0;
+            margin-top: auto;
+            border-top: 3px solid var(--gold);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .footer-about p {
+            color: var(--gray-light);
+            margin: 1rem 0;
+            font-size: 0.813rem;
+            line-height: 1.6;
+        }
+        .footer-logo img { height: 45px; width: auto; margin-bottom: 1rem; }
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--gold);
+        }
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold-gradient);
+        }
+        .footer-links { list-style: none; }
+        .footer-link { margin-bottom: 0.7rem; }
+        .footer-link a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.813rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-link a:hover { color: var(--gold); transform: translateX(5px); }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.7rem;
+            color: var(--gray-light);
+            font-size: 0.813rem;
+        }
+        .contact-item i { color: var(--gold); width: 20px; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-link:hover { background: var(--gold); color: var(--primary-black); transform: translateY(-3px); }
+        .footer-bottom { padding: 1.5rem 0; }
+        .footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .copyright { font-size: 0.75rem; color: var(--gray-light); }
+        .copyright a { color: var(--gold); text-decoration: none; }
+        .payment-methods {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .payment-methods img {
+            height: 30px;
+            width: auto;
+            background: var(--white);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 998;
+        }
+        .whatsapp-btn, .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+        .whatsapp-btn { background: #25D366; }
+        .whatsapp-btn img { width: 28px; height: 28px; }
+        .back-to-top {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            text-decoration: none;
+            font-size: 1.125rem;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 1.5rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 0.7rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        .auth-tab.active { color: var(--gold-dark); border-bottom: 2px solid var(--gold); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.35rem; font-size: 0.813rem; font-weight: 500; }
+        .form-group input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+        }
+        .auth-submit {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--gold-gradient);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .notification {
+            background: var(--white);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 360px;
+            border-left: 4px solid;
+        }
+        .notification.show { transform: translateX(0); }
+        .notification-success { border-left-color: var(--success); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-nav { display: none; }
+            .mobile-menu-toggle { display: flex; }
+            .cart-container { grid-template-columns: 1fr; }
+            .cart-summary { position: static; margin-top: 1.5rem; }
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .cart-items-header { display: none; }
+            .cart-item {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .cart-item-product { justify-content: center; }
+            .cart-item-quantity { justify-content: center; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-title::after { left: 50%; transform: translateX(-50%); }
+            .footer-links { text-align: center; }
+            .footer-link a { justify-content: center; }
+            .contact-item { justify-content: center; }
+            .social-links { justify-content: center; }
+            .search-btn span { display: none; }
+        }
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .header-actions { gap: 0.4rem; }
+            .action-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+            .cart-item-image { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-message"><i class="fas fa-crown"></i><p>Bienvenue chez <span>Le Paname Service</span> | Livraison gratuite dès 5000 Fcfa</p></div>
+            <div class="customer-service">
+                <div class="service-item"><i class="fas fa-headset"></i><div class="service-info"><h4>Service Client</h4><p><a href="tel:+237657715482">+237 657 71 54 82</a></p></div></div>
+                <div class="service-item"><i class="fas fa-envelope"></i><div class="service-info"><h4>Email</h4><p><a href="mailto:lepanameservice@gmail.com">lepanameservice@gmail.com</a></p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Le Paname Service" onerror="this.src='https://placehold.co/200x60?text=Le+Paname+Service'">
+                </a>
+            </div>
+            <div class="search-wrapper"><form class="search-form"><input type="search" class="search-input" placeholder="Rechercher..."><button type="submit" class="search-btn"><i class="fas fa-search"></i><span>Rechercher</span></button></form></div>
+            <div class="header-actions">
+                <button class="action-btn" data-modal="auth"><i class="far fa-user"></i></button>
+                <a href="wishlist.html" class="action-btn"><i class="far fa-heart"></i><span class="wishlist-badge">0</span></a>
+                <a href="cart.html" class="action-btn"><i class="fas fa-shopping-bag"></i><span class="cart-badge">0</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Desktop -->
+    <div class="nav-wrapper">
+        <div class="container nav-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i><span>Menu</span></button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="paname-store.html" class="nav-link">Paname Store</a></li>
+                    <li class="nav-item"><a href="paname-market.html" class="nav-link">Paname Market</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="paname-wedding.html" class="dropdown-item">Paname Wedding</a>
+                            <a href="paname-house.html" class="dropdown-item">Paname House</a>
+                            <a href="paname-travel.html" class="dropdown-item">Paname Travel</a>
+                            <a href="paname-event.html" class="dropdown-item">Paname Event</a>
+                            <a href="paname-production.html" class="dropdown-item">Paname Production</a>
+                            <a href="paname-security.html" class="dropdown-item">Paname Security</a>
+                            <a href="paname-luxury.html" class="dropdown-item">Paname Luxury</a>
+                            <a href="livraison-express.html" class="dropdown-item">Livraison Express</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="sante.html" class="nav-link">Santé</a></li>
+                    <li class="nav-item"><a href="auto-moto.html" class="nav-link">Auto-Moto</a></li>
+                    <li class="nav-item"><a href="montres-bijoux.html" class="nav-link">Montres & Bijoux</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header"><h3><i class="fas fa-store"></i> Le Paname Service</h3><button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button></div>
+        <div class="sidebar-search"><form class="search-form"><input type="search" class="search-input" placeholder="Rechercher..."><button type="submit" class="search-btn"><i class="fas fa-search"></i></button></form></div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item"><a href="index.html" class="sidebar-nav-link"><span><i class="fas fa-home"></i> Accueil</span></a></li>
+            <li class="sidebar-nav-item"><a href="paname-store.html" class="sidebar-nav-link"><span><i class="fas fa-laptop"></i> Paname Store</span></a></li>
+            <li class="sidebar-nav-item"><a href="paname-market.html" class="sidebar-nav-link"><span><i class="fas fa-shopping-cart"></i> Paname Market</span></a></li>
+            <li class="sidebar-nav-item"><div class="sidebar-nav-link" onclick="toggleSubmenu(this)"><span><i class="fas fa-concierge-bell"></i> Services</span><i class="fas fa-chevron-right chevron"></i></div>
+                <ul class="sidebar-submenu">
+                    <li class="sidebar-submenu-item"><a href="paname-wedding.html" class="sidebar-submenu-link">Paname Wedding</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-house.html" class="sidebar-submenu-link">Paname House</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-travel.html" class="sidebar-submenu-link">Paname Travel</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-event.html" class="sidebar-submenu-link">Paname Event</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-production.html" class="sidebar-submenu-link">Paname Production</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-security.html" class="sidebar-submenu-link">Paname Security</a></li>
+                    <li class="sidebar-submenu-item"><a href="paname-luxury.html" class="sidebar-submenu-link">Paname Luxury</a></li>
+                    <li class="sidebar-submenu-item"><a href="livraison-express.html" class="sidebar-submenu-link">Livraison Express</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-nav-item"><a href="sante.html" class="sidebar-nav-link"><span><i class="fas fa-heartbeat"></i> Santé</span></a></li>
+            <li class="sidebar-nav-item"><a href="auto-moto.html" class="sidebar-nav-link"><span><i class="fas fa-car"></i> Auto-Moto</span></a></li>
+            <li class="sidebar-nav-item"><a href="montres-bijoux.html" class="sidebar-nav-link"><span><i class="fas fa-gem"></i> Montres & Bijoux</span></a></li>
+            <li class="sidebar-nav-item"><a href="contact.html" class="sidebar-nav-link"><span><i class="fas fa-envelope"></i> Contact</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="action-btn" data-modal="auth" style="width:100%; border-radius:var(--border-radius); gap:0.5rem; margin-bottom:1rem;"><i class="far fa-user"></i><span>Mon compte</span></button>
+            <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+            <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+            <div class="sidebar-contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+            <div class="sidebar-contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-header">
+                <h1 class="cart-title">Mon Panier</h1>
+            </div>
+            <div class="cart-container">
+                <div class="cart-items" id="cartItemsContainer">
+                    <!-- Cart items will be loaded here by JavaScript -->
+                </div>
+                <div class="cart-summary" id="cartSummary">
+                    <!-- Cart summary will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-truck"></i></div><h4>Livraison Gratuite</h4><p>Dès 5000 Fcfa</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h4>Paiement sécurisé</h4><p>OM, MTN, PayPal</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h4>Support 24/7</h4><p>Service client</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-store"></i></div><h4>Retrait magasin</h4><p>-10% dès 10 000 Fcfa</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-undo-alt"></i></div><h4>Retour facile</h4><p>14 jours</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo"><img src="assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Le Paname Service"></div>
+                    <p>Le Paname Service - Votre partenaire de confiance pour tous vos besoins en high-tech, sécurité, événementiel, alimentation et bien plus encore. Qualité et service garantis au Cameroun.</p>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+                </div>
+                <div>
+                    <h4 class="footer-title">E-commerce</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li class="footer-link"><a href="pages/panamestore.html"><i class="fas fa-chevron-right"></i> Paname Store</a></li>
+                        <li class="footer-link"><a href="pages/panamemarket.html"><i class="fas fa-chevron-right"></i> Paname Market</a></li>
+                        <li class="footer-link"><a href="pages/sante.html"><i class="fas fa-chevron-right"></i> Santé</a></li>
+                        <li class="footer-link"><a href="pages/auto_moto.html"><i class="fas fa-chevron-right"></i> Auto-Moto</a></li>
+                        <li class="footer-link"><a href="pages/montres-bijoux.html"><i class="fas fa-chevron-right"></i> Montres & Bijoux</a></li>
+                        <li class="footer-link"><a href="pages/contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Nos services</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="pages/panamewedding.html"><i class="fas fa-chevron-right"></i> Paname Wedding</a></li>
+                        <li class="footer-link"><a href="pages/panamehouse.html"><i class="fas fa-chevron-right"></i> Paname House</a></li>
+                        <li class="footer-link"><a href="pages/panametravel.html"><i class="fas fa-chevron-right"></i> Paname Travel</a></li>
+                        <li class="footer-link"><a href="pages/panameevent.html"><i class="fas fa-chevron-right"></i> Paname Event</a></li>
+                        <li class="footer-link"><a href="pages/panameproduction.html"><i class="fas fa-chevron-right"></i> Paname Production</a></li>
+                        <li class="footer-link"><a href="pages/panamesecurity.html"><i class="fas fa-chevron-right"></i> Paname Security</a></li>
+                        <li class="footer-link"><a href="pages/panamesecurity.html"><i class="fas fa-chevron-right"></i> Paname Luxury</a></li>
+                        <li class="footer-link"><a href="pages/livraisonexpress.html"><i class="fas fa-chevron-right"></i> Livraison Express</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61557575415489" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/lepanameservice237?igsh=cWc3bjNxNXA4dTc0" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/+237657715482" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@lepanameservice237?_r=1&_t=ZS-96NsU31nxdE" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="copyright">&copy; 2025 <a href="index.html">Le Paname Service</a>. Tous droits réservés.</div>
+                    <div class="payment-methods">
+                        <img src="assets/om.jpg" alt="Orange Money">
+                        <img src="assets/momo.jpg" alt="MTN Mobile Money">
+                        <img src="assets/paypal.jpg" alt="PayPal">
+                        <img src="assets/image/payment-1.png" alt="Visa">
+                        <img src="assets/image/payment-2.png" alt="Mastercard">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons"><a href="https://wa.me/+237657715482" class="whatsapp-btn" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a><a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a></div>
+
+    <!-- Modal Auth -->
+    <div class="modal" id="authModal"><div class="modal-content"><button class="modal-close" data-modal-close><i class="fas fa-times"></i></button><div class="modal-header"><h2>Bienvenue</h2><p>Connectez-vous ou créez un compte</p></div><div class="auth-tabs"><button class="auth-tab active" data-tab="login">Connexion</button><button class="auth-tab" data-tab="register">Inscription</button></div><form class="auth-form active" id="loginForm"><div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.com" required></div><div class="form-group"><label>Mot de passe</label><input type="password" placeholder="••••••••" required></div><button type="submit" class="auth-submit">Se connecter</button></form><form class="auth-form" id="registerForm"><div class="form-group"><label>Nom complet</label><input type="text" required></div><div class="form-group"><label>Email</label><input type="email" required></div><div class="form-group"><label>Téléphone</label><input type="tel" required></div><div class="form-group"><label>Mot de passe</label><input type="password" required></div><div class="form-group"><label>Confirmer</label><input type="password" required></div><button type="submit" class="auth-submit">S'inscrire</button></form></div></div>
+
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        // Données du panier (exemple avec produits en dur)
+        let cartItems = [
+            { id: 1, name: 'Ordinateur Portable Ultrabook', category: 'Informatique', price: 450000, quantity: 1, image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200' },
+            { id: 2, name: 'Souris Gamer RGB', category: 'Périphériques', price: 25000, quantity: 2, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=200' },
+            { id: 3, name: 'Écran 4K 27 pouces', category: 'Écrans', price: 250000, quantity: 1, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200' }
+        ];
+
+        let cartCount = 0, wishlistCount = 0;
+
+        function formatPrice(price) {
+            return price.toLocaleString() + ' Fcfa';
+        }
+
+        function updateCartBadge() {
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-badge').forEach(el => {
+                el.textContent = totalItems;
+                el.style.display = totalItems > 0 ? 'flex' : 'none';
+            });
+            // Mettre à jour le compteur dans le header principal
+            const cartBadge = document.querySelector('.header-actions .cart-badge');
+            if (cartBadge) cartBadge.textContent = totalItems;
+        }
+
+        function updateWishlistCount() {
+            document.querySelectorAll('.wishlist-badge').forEach(el => {
+                el.textContent = wishlistCount;
+                el.style.display = wishlistCount > 0 ? 'flex' : 'none';
+            });
+        }
+
+        function showNotification(title, message, type = 'success') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                <div><strong>${title}</strong><p style="font-size:0.75rem; margin-top:0.25rem;">${message}</p></div>
+                <button onclick="this.parentElement.remove()" style="background:none; border:none; cursor:pointer;"><i class="fas fa-times"></i></button>
+            `;
+            container.appendChild(notification);
+            setTimeout(() => notification.classList.add('show'), 10);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cartItems.find(i => i.id === productId);
+            if (item) {
+                const newQuantity = item.quantity + change;
+                if (newQuantity >= 1) {
+                    item.quantity = newQuantity;
+                } else if (newQuantity === 0) {
+                    removeItem(productId);
+                    return;
+                }
+                renderCart();
+            }
+        }
+
+        function removeItem(productId) {
+            cartItems = cartItems.filter(i => i.id !== productId);
+            renderCart();
+            updateCartBadge();
+            showNotification('Produit supprimé', 'L\'article a été retiré de votre panier', 'success');
+        }
+
+        function applyPromoCode() {
+            const promoInput = document.getElementById('promoCode');
+            const code = promoInput?.value.trim().toUpperCase();
+            if (code === 'BIENVENUE10') {
+                showNotification('Code promo appliqué', 'Réduction de 10% appliquée sur votre commande', 'success');
+            } else if (code === 'LIVRAISON') {
+                showNotification('Code promo appliqué', 'Livraison gratuite offerte', 'success');
+            } else if (code) {
+                showNotification('Code invalide', 'Ce code promo n\'existe pas', 'error');
+            }
+            if (promoInput) promoInput.value = '';
+        }
+
+        function proceedToCheckout() {
+            if (cartItems.length === 0) {
+                showNotification('Panier vide', 'Ajoutez des produits avant de passer commande', 'error');
+                return;
+            }
+            showNotification('Commande validée !', 'Vous allez être redirigé vers la page de paiement', 'success');
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 2000);
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const summaryContainer = document.getElementById('cartSummary');
+            
+            if (!container) return;
+            
+            if (cartItems.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Votre panier est vide</h3>
+                        <p>Découvrez nos produits et ajoutez-les à votre panier</p>
+                        <a href="index.html" class="btn">Continuer mes achats</a>
+                    </div>
+                `;
+                if (summaryContainer) {
+                    summaryContainer.innerHTML = `
+                        <h3>Résumé de la commande</h3>
+                        <div class="summary-row"><span>Sous-total</span><span>0 Fcfa</span></div>
+                        <div class="summary-row"><span>Livraison</span><span>Gratuite</span></div>
+                        <div class="summary-row total"><span>Total</span><span>0 Fcfa</span></div>
+                        <button class="checkout-btn" onclick="proceedToCheckout()" disabled style="opacity:0.5">Passer commande</button>
+                    `;
+                }
+                return;
+            }
+            
+            // Affichage des produits
+            container.innerHTML = `
+                <div class="cart-items-header">
+                    <span>Produit</span>
+                    <span>Prix</span>
+                    <span>Quantité</span>
+                    <span>Total</span>
+                    <span></span>
+                </div>
+                ${cartItems.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-product">
+                            <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
+                            <div class="cart-item-info"><h4>${item.name}</h4><p>${item.category}</p></div>
+                        </div>
+                        <div class="cart-item-price">${formatPrice(item.price)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, parseInt(this.value) - ${item.quantity})">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <div class="cart-item-total">${formatPrice(item.price * item.quantity)}</div>
+                        <div class="cart-item-remove" onclick="removeItem(${item.id})"><i class="fas fa-trash-alt"></i></div>
+                    </div>
+                `).join('')}
+            `;
+            
+            // Calcul des totaux
+            const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const livraison = subtotal >= 5000 ? 0 : 1500;
+            const total = subtotal + livraison;
+            
+            // Affichage du résumé
+            summaryContainer.innerHTML = `
+                <h3>Résumé de la commande</h3>
+                <div class="summary-row"><span>Sous-total</span><span>${formatPrice(subtotal)}</span></div>
+                <div class="summary-row"><span>Livraison</span><span>${livraison === 0 ? 'Gratuite' : formatPrice(livraison)}</span></div>
+                <div class="promo-code">
+                    <div class="promo-input">
+                        <input type="text" id="promoCode" placeholder="Code promo">
+                        <button onclick="applyPromoCode()">Appliquer</button>
+                    </div>
+                </div>
+                <div class="summary-row total"><span>Total</span><span>${formatPrice(total)}</span></div>
+                <button class="checkout-btn" onclick="proceedToCheckout()"><i class="fas fa-lock"></i> Passer commande</button>
+                <div class="payment-methods-summary">
+                    <p>Paiement sécurisé</p>
+                    <div class="payment-icons">
+                        <img src="assets/om.jpg" alt="Orange Money">
+                        <img src="assets/momo.jpg" alt="MTN Mobile Money">
+                        <img src="assets/paypal.jpg" alt="PayPal">
+                    </div>
+                </div>
+            `;
+            
+            updateCartBadge();
+        }
+
+        // Mobile Sidebar
+        const mobileToggle = document.getElementById('mobileMenuToggle'), mobileSidebar = document.getElementById('mobileSidebar'), sidebarClose = document.getElementById('sidebarClose'), overlay = document.getElementById('overlay');
+        function openSidebar() { mobileSidebar?.classList.add('active'); overlay?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { mobileSidebar?.classList.remove('active'); overlay?.classList.remove('active'); document.body.style.overflow = ''; }
+        mobileToggle?.addEventListener('click', openSidebar); sidebarClose?.addEventListener('click', closeSidebar); overlay?.addEventListener('click', closeSidebar);
+
+        function toggleSubmenu(element) { const sub = element.nextElementSibling; const chev = element.querySelector('.chevron'); if(sub) { sub.classList.toggle('active'); if(chev) chev.style.transform = sub.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)'; } }
+
+        // Modal
+        const modal = document.getElementById('authModal'), modalTriggers = document.querySelectorAll('[data-modal="auth"]'), modalClose = document.querySelector('[data-modal-close]');
+        function openModal() { modal?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal?.classList.remove('active'); document.body.style.overflow = ''; }
+        modalTriggers.forEach(t => t.addEventListener('click', openModal)); modalClose?.addEventListener('click', closeModal); modal?.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+
+        document.querySelectorAll('.auth-tab').forEach(tab => { tab.addEventListener('click', () => { const target = tab.dataset.tab; document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active')); tab.classList.add('active'); document.getElementById(`${target}Form`).classList.add('active'); }); });
+
+        document.getElementById('loginForm')?.addEventListener('submit', e => { e.preventDefault(); showNotification('Connexion', 'Connexion réussie !', 'success'); setTimeout(closeModal, 1500); });
+        document.getElementById('registerForm')?.addEventListener('submit', e => { e.preventDefault(); const pwd = e.target.querySelectorAll('input[type="password"]'); if(pwd[0] && pwd[1] && pwd[0].value !== pwd[1].value) { showNotification('Erreur', 'Les mots de passe ne correspondent pas', 'error'); return; } showNotification('Inscription', 'Compte créé avec succès !', 'success'); document.querySelector('[data-tab="login"]').click(); });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('visible', window.scrollY > 300); });
+        backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeSidebar(); } });
+
+        // Exposer les fonctions globalement
+        window.updateQuantity = updateQuantity;
+        window.removeItem = removeItem;
+        window.applyPromoCode = applyPromoCode;
+        window.proceedToCheckout = proceedToCheckout;
+        window.toggleSubmenu = toggleSubmenu;
+
+        // Initialisation
+        renderCart();
+        updateCartBadge();
+        updateWishlistCount();
+    </script>
+</body>
+</html>

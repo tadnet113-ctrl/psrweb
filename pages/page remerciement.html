@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirmation de votre commande - Le Paname Service">
+    
+    <title>Confirmation de commande | Le Paname Service</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #000000;
+            --secondary-black: #111111;
+            --dark-gray: #1a1a1a;
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff;
+            --white-soft: #f8f9fa;
+            --white-off: #f5f5f5;
+            --text-dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+            --text-light: #6b6b6b;
+            --text-white: #ffffff;
+            --text-white-muted: #e0e0e0;
+            --success: #10b981;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            --border-radius-full: 9999px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            --gold-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            --gold-shadow-lg: 0 8px 30px rgba(212, 175, 55, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* ==================== HEADER TOP ==================== */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            color: var(--text-white);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-top-message {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-top-message i {
+            color: var(--gold);
+        }
+
+        .header-top-message p {
+            margin: 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-white-muted);
+        }
+
+        .header-top-message span {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .customer-service {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-item i {
+            font-size: 1.25rem;
+            color: var(--gold);
+        }
+
+        .service-item .service-info h4 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.9;
+            color: var(--text-white-muted);
+        }
+
+        .service-item .service-info p {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .service-item .service-info a {
+            color: var(--text-white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .service-item .service-info a:hover {
+            color: var(--gold);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.02); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.02); }
+        }
+
+        .heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* ==================== HEADER MAIN ==================== */
+        .header-main {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .header-main .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            flex-shrink: 0;
+        }
+
+        .logo a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .search-wrapper {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-form {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-full);
+            overflow: hidden;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .search-form:focus-within {
+            border-color: var(--gold);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            background: transparent;
+            color: var(--text-dark);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-btn {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-btn:hover {
+            background: var(--gold-light);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-full);
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            font-size: 1.25rem;
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            color: var(--primary-black);
+            border-color: var(--gold);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .cart-badge,
+        .wishlist-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            font-size: 0.7rem;
+            font-weight: 800;
+            min-width: 18px;
+            height: 18px;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            transform: translate(25%, -25%);
+            border: 1px solid var(--white);
+        }
+
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-left: 1rem;
+            border-left: 1px solid var(--gold);
+        }
+
+        .delivery-info i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .delivery-text p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.125rem;
+        }
+
+        .delivery-text span {
+            font-weight: 700;
+            color: var(--gold-dark);
+            font-size: 0.9rem;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--gold);
+            border-radius: var(--border-radius-full);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .user-menu:hover {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            box-shadow: var(--gold-shadow);
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        .nav-wrapper {
+            background: var(--white);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .catalog-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .catalog-btn i {
+            font-size: 1.25rem;
+        }
+
+        .catalog-btn:hover {
+            background: var(--gold-light);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .main-nav {
+            flex: 1;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 1rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            white-space: nowrap;
+        }
+
+        .nav-link i {
+            font-size: 1rem;
+            transition: var(--transition);
+            color: var(--gold-dark);
+        }
+
+        .nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-black);
+        }
+
+        .nav-link.active {
+            color: var(--gold-dark);
+            font-weight: 600;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 250px;
+            box-shadow: var(--shadow-xl);
+            border-radius: var(--border-radius-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid var(--gold);
+            padding: 0.5rem 0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-black);
+            padding-left: 2rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--gold);
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        /* ==================== SIDEBAR MOBILE ==================== */
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 320px;
+            max-width: 90%;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-xl);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid var(--gold);
+        }
+
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--gold);
+            background: var(--primary-black);
+        }
+
+        .sidebar-header h3 {
+            font-size: 1.25rem;
+            color: var(--gold);
+            font-family: var(--font-serif);
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gold);
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            padding: 1.25rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-black);
+            border-color: var(--gold);
+        }
+
+        .sidebar-nav-link i {
+            width: 20px;
+            color: var(--gold-dark);
+        }
+
+        .sidebar-footer {
+            padding: 1.25rem;
+            border-top: 1px solid var(--gold);
+            background: var(--white-off);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(3px);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==================== CONFIRMATION PAGE ==================== */
+        .confirmation-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--white-soft) 0%, var(--white) 100%);
+            flex: 1;
+        }
+
+        .confirmation-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            border: 2px solid var(--gold);
+            overflow: hidden;
+        }
+
+        .confirmation-header {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--gold-shadow-lg);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: var(--gold-shadow); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: var(--primary-black);
+        }
+
+        .confirmation-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+        }
+
+        .confirmation-header h1 span {
+            color: var(--gold);
+        }
+
+        .confirmation-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .confirmation-body {
+            padding: 2.5rem;
+        }
+
+        .order-status {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .status-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -1.5rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .step-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+        }
+
+        .step-icon i {
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .step-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .step-label small {
+            display: block;
+            font-weight: 400;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .order-details {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-serif);
+        }
+
+        .detail-title i {
+            color: var(--gold);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            background: var(--white-soft);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .items-table th {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .items-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .items-table tbody tr:hover {
+            background: var(--white-soft);
+        }
+
+        .items-table .text-right {
+            text-align: right;
+        }
+
+        .items-table .text-center {
+            text-align: center;
+        }
+
+        .totals-section {
+            background: var(--white-soft);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            margin-top: 1.5rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        .total-row.grand-total {
+            border-top: 2px solid var(--gold);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .grand-total .total-value {
+            color: var(--gold-dark);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+        }
+
+        .contact-banner {
+            background: var(--gold-gradient);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            color: var(--primary-black);
+            margin-top: 2rem;
+        }
+
+        .contact-banner i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .contact-banner p {
+            margin: 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            text-decoration: none;
+            border-radius: var(--border-radius-full);
+            font-weight: 700;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--gold-shadow);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: var(--gold-shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-dark);
+            border: 2px solid var(--gold);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            border-color: transparent;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-black);
+            color: var(--text-white);
+            padding: 4rem 0 0;
+            margin-top: auto;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1.5rem;
+            filter: brightness(1.1);
+        }
+
+        .footer-about p {
+            color: var(--text-white-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact {
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-white-muted);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            color: var(--gold);
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+            color: var(--gold);
+            font-family: var(--font-serif);
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold-gradient);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-link a {
+            color: var(--text-white-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-link a:hover {
+            color: var(--gold);
+            transform: translateX(8px);
+        }
+
+        .footer-link a i {
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+            box-shadow: var(--gold-shadow);
+        }
+
+        .footer-bottom {
+            padding: 1.8rem 0;
+            background: var(--primary-black);
+        }
+
+        .footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .copyright {
+            color: var(--text-white-muted);
+            font-size: 0.95rem;
+        }
+
+        .copyright a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .copyright a:hover {
+            color: var(--gold-light);
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .payment-methods img {
+            height: 35px;
+            width: auto;
+            background: var(--white);
+            padding: 0.35rem 0.6rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .payment-methods img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--gold-shadow);
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        .whatsapp-btn,
+        .back-to-top {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            border: 2px solid var(--gold);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .whatsapp-btn img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .back-to-top {
+            background: var(--gold-gradient);
+            color: var(--primary-black);
+            opacity: 0;
+            visibility: hidden;
+            border: 2px solid var(--white);
+            font-size: 1.5rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold-light);
+            transform: translateY(-5px);
+        }
+
+        .empty-order {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .empty-order i {
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-top .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .customer-service {
+                justify-content: center;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .delivery-info {
+                display: none;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-main .container {
+                flex-wrap: wrap;
+            }
+            .search-wrapper {
+                order: 3;
+                max-width: 100%;
+                margin-top: 0.5rem;
+            }
+            .confirmation-header h1 {
+                font-size: 1.8rem;
+            }
+            .order-status {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .status-step:not(:last-child)::after {
+                display: none;
+            }
+            .items-table {
+                font-size: 0.85rem;
+            }
+            .items-table th,
+            .items-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .header-actions {
+                gap: 0.5rem;
+            }
+            .action-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            .whatsapp-btn,
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+            }
+            .confirmation-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-message heartbeat">
+                <i class="fas fa-crown"></i>
+                <p>Bienvenue chez <span>Le Paname Service</span> | Livraison gratuite en 24h</p>
+            </div>
+            
+            <div class="customer-service fade-in">
+                <div class="service-item">
+                    <i class="fas fa-headset"></i>
+                    <div class="service-info">
+                        <h4>Service Client 24/7</h4>
+                        <p><a href="tel:+237657715482">+237 657 71 54 82</a></p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="service-info">
+                        <h4>Email</h4>
+                        <p><a href="mailto:lepanameservice@gmail.com">lepanameservice@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-top-message heartbeat">
+                <i class="fas fa-store"></i>
+                <p>Retrait en magasin <span>-10%</span> dès 10 000 Fcfa</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Le Paname Service">
+                </a>
+            </div>
+            
+            <div class="search-wrapper">
+                <form class="search-form">
+                    <input type="search" class="search-input" placeholder="Rechercher...">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        <span>Rechercher</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="header-actions">
+                <button class="action-btn" data-modal="auth">
+                    <i class="far fa-user"></i>
+                </button>
+                <a href="mycart.html" class="action-btn">
+                    <i class="far fa-heart"></i>
+                    <span class="wishlist-badge">0</span>
+                </a>
+                <a href="mycart.html" class="action-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+            
+            <div class="delivery-info">
+                <i class="fas fa-truck"></i>
+                <div class="delivery-text">
+                    <p>Livraison gratuite</p>
+                    <span>dès 5 000 Fcfa</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper">
+        <div class="container nav-container">
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <button class="catalog-btn">
+                <i class="fas fa-th-large"></i>
+                <span>Toutes nos catégories</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="paname-store.html" class="nav-link">Paname Store</a></li>
+                    <li class="nav-item"><a href="paname-market.html" class="nav-link">Paname Market</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="paname-wedding.html" class="dropdown-item">Paname Wedding</a>
+                            <a href="paname-house.html" class="dropdown-item">Paname House</a>
+                            <a href="paname-travel.html" class="dropdown-item">Paname Travel</a>
+                            <a href="livraison express.html" class="dropdown-item">Livraison Express</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="sante.html" class="nav-link">Santé</a></li>
+                    <li class="nav-item"><a href="auto-moto.html" class="nav-link">Auto-Moto</a></li>
+                    <li class="nav-item"><a href="montres-bijoux.html" class="nav-link">Montres & Bijoux</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sidebar Mobile -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button class="sidebar-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item"><a href="../index.html" class="sidebar-nav-link"><i class="fas fa-home"></i> Accueil</a></li>
+                <li class="sidebar-nav-item"><a href="paname-store.html" class="sidebar-nav-link"><i class="fas fa-laptop"></i> Paname Store</a></li>
+                <li class="sidebar-nav-item"><a href="paname-market.html" class="sidebar-nav-link"><i class="fas fa-shopping-cart"></i> Paname Market</a></li>
+                <li class="sidebar-nav-item"><a href="paname-wedding.html" class="sidebar-nav-link"><i class="fas fa-heart"></i> Paname Wedding</a></li>
+                <li class="sidebar-nav-item"><a href="paname-house.html" class="sidebar-nav-link"><i class="fas fa-home"></i> Paname House</a></li>
+                <li class="sidebar-nav-item"><a href="paname-travel.html" class="sidebar-nav-link"><i class="fas fa-plane"></i> Paname Travel</a></li>
+                <li class="sidebar-nav-item"><a href="livraison express.html" class="sidebar-nav-link"><i class="fas fa-truck"></i> Livraison Express</a></li>
+                <li class="sidebar-nav-item"><a href="contact.html" class="sidebar-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- Confirmation Section -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="confirmation-header">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h1><span>Merci</span> pour votre commande !</h1>
+                    <p>Votre commande a bien été enregistrée et notre équipe s'en occupe avec le plus grand soin. Vous recevrez bientôt un e-mail de confirmation avec tous les détails.</p>
+                </div>
+                
+                <div class="confirmation-body">
+                    <div class="order-status">
+                        <div class="status-step">
+                            <div class="step-icon"><i class="fas fa-check"></i></div>
+                            <div class="step-label">Commande confirmée <small>En cours</small></div>
+                        </div>
+                        <div class="status-step">
+                            <div class="step-icon" style="background: var(--gold);"><i class="fas fa-box"></i></div>
+                            <div class="step-label">Préparation <small>En attente</small></div>
+                        </div>
+                        <div class="status-step">
+                            <div class="step-icon" style="background: var(--border-color);"><i class="fas fa-truck"></i></div>
+                            <div class="step-label">Livraison <small>En attente</small></div>
+                        </div>
+                    </div>
+                    
+                    <div id="order-details" class="order-details">
+                        <!-- Les détails seront injectés ici par JavaScript -->
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="../index.html" class="btn">Continuer mes achats</a>
+                        <a href="mycart.html" class="btn btn-outline">Voir mon panier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="../assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Logo">
+                    </div>
+                    <p>Votre partenaire de confiance pour tous vos besoins en high-tech, sécurité, événementiel et bien plus encore.</p>
+                    <div class="footer-contact">
+                        <div class="contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                        <div class="contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">À propos</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Qui sommes-nous</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Notre histoire</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Carrières</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="paname-wedding.html"><i class="fas fa-chevron-right"></i> Paname Wedding</a></li>
+                        <li class="footer-link"><a href="paname-house.html"><i class="fas fa-chevron-right"></i> Paname House</a></li>
+                        <li class="footer-link"><a href="paname-travel.html"><i class="fas fa-chevron-right"></i> Paname Travel</a></li>
+                        <li class="footer-link"><a href="livraison express.html"><i class="fas fa-chevron-right"></i> Livraison Express</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Aide & Support</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Centre d'aide</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Suivi de commande</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Retours et remboursements</a></li>
+                        <li class="footer-link"><a href="#"><i class="fas fa-chevron-right"></i> Conditions générales</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="copyright">&copy; 2025 <a href="../index.html">Le Paname Service</a>. Tous droits réservés.</div>
+                    <div class="payment-methods">
+                        <img src="../assets/om.jpg" alt="Orange Money">
+                        <img src="../assets/momo.jpg" alt="MTN Mobile Money">
+                        <img src="../assets/paypal.jpg" alt="PayPal">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+237657715482" class="whatsapp-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+        <a href="#" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <script>
+        // Menu mobile
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const sidebar = document.querySelector('.mobile-sidebar');
+        const overlay = document.querySelector('.overlay');
+        const sidebarClose = document.querySelector('.sidebar-close');
+
+        menuToggle?.addEventListener('click', () => { sidebar.classList.add('active'); overlay.classList.add('active'); });
+        sidebarClose?.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
+        overlay?.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 300));
+        backToTop?.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // Afficher les détails de la commande
+        function displayOrderDetails() {
+            const orders = JSON.parse(localStorage.getItem('panameOrders')) || [];
+            const orderDetails = document.getElementById('order-details');
+            
+            if (orders.length === 0) {
+                orderDetails.innerHTML = `
+                    <div class="empty-order">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Aucune commande trouvée</h3>
+                        <p>Vous n'avez pas encore passé de commande.</p>
+                        <a href="../index.html" class="btn" style="margin-top: 1.5rem;">Découvrir nos produits</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const lastOrder = orders[orders.length - 1];
+            const orderDate = new Date(lastOrder.date);
+            const formattedDate = orderDate.toLocaleDateString('fr-FR', {
+                day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            
+            let itemsHtml = '';
+            lastOrder.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                itemsHtml += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td class="text-center">${item.quantity}</td>
+                        <td class="text-right">${item.price.toLocaleString('fr-FR')} FCFA</td>
+                        <td class="text-right">${itemTotal.toLocaleString('fr-FR')} FCFA</td>
+                    </tr>
+                `;
+            });
+            
+            let html = `
+                <div class="detail-section">
+                    <div class="detail-title"><i class="fas fa-receipt"></i> Informations de commande</div>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">Numéro de commande</span><span class="info-value">${lastOrder.id}</span></div>
+                        <div class="info-item"><span class="info-label">Date</span><span class="info-value">${formattedDate}</span></div>
+                        <div class="info-item"><span class="info-label">Statut</span><span class="info-value" style="color: var(--success);">✓ En attente de traitement</span></div>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-title"><i class="fas fa-user"></i> Informations client</div>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">Nom</span><span class="info-value">${lastOrder.customer.name}</span></div>
+                        ${lastOrder.customer.company ? `<div class="info-item"><span class="info-label">Société</span><span class="info-value">${lastOrder.customer.company}</span></div>` : ''}
+                        <div class="info-item"><span class="info-label">Adresse</span><span class="info-value">${lastOrder.customer.address}</span></div>
+                        <div class="info-item"><span class="info-label">Ville</span><span class="info-value">${lastOrder.customer.city}</span></div>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-title"><i class="fas fa-box"></i> Articles commandés</div>
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th class="text-center">Qté</th>
+                                <th class="text-right">Prix unitaire</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${itemsHtml}
+                        </tbody>
+                    </table>
+                    
+                    <div class="totals-section">
+                        <div class="total-row">
+                            <span>Sous-total</span>
+                            <span>${lastOrder.totals.subtotal.toLocaleString('fr-FR')} FCFA</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Frais de livraison</span>
+                            <span>${lastOrder.totals.shipping.toLocaleString('fr-FR')} FCFA</span>
+                        </div>
+                        <div class="total-row grand-total">
+                            <span>Total</span>
+                            <span class="total-value">${lastOrder.totals.total.toLocaleString('fr-FR')} FCFA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-banner">
+                    <i class="fas fa-headset"></i>
+                    <p><strong>📞 Pour toute question concernant votre commande :</strong></p>
+                    <p>+237 657 71 54 82 / +237 676 39 18 16</p>
+                    <p>lepanameservice@gmail.com</p>
+                </div>
+            `;
+            
+            orderDetails.innerHTML = html;
+        }
+        
+        // Compteurs panier
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('panameCart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-badge').forEach(el => { el.textContent = count; el.style.display = count > 0 ? 'flex' : 'none'; });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderDetails();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

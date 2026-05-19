@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Paname Auto-Moto - Vente de voitures et motos d'occasion à Yaoundé, Cameroun. Large choix, qualité garantie et financement disponible.">
+    <meta name="keywords" content="voitures occasion, motos occasion, vente auto, vente moto, Yaoundé, Cameroun, automobile, deux roues">
+    <meta name="author" content="Le Paname Service">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Paname Auto-Moto - Vente de Voitures et Motos | Le Paname Service</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-black: #0a0a0a; --secondary-black: #111111; --dark-gray: #1a1a1a;
+            --gold: #D4AF37; --gold-light: #F4D03F; --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff; --white-off: #f8f9fa; --gray-light: #e9ecef;
+            --gray-medium: #6c757d; --text-dark: #212529; --text-gray: #495057;
+            --success: #28a745; --danger: #dc3545;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04); --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12); --gold-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --header-height: 60px; --container-padding: 1rem; --container-max-width: 1280px;
+            --border-radius: 0.5rem; --border-radius-lg: 0.75rem; --border-radius-xl: 1rem; --border-radius-full: 9999px;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background-color: var(--white); line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: var(--container-max-width); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+
+        /* Header Top */
+        .header-top { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); color: var(--white); padding: 0.5rem 0; border-bottom: 2px solid var(--gold); font-size: 0.75rem; }
+        .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+        .header-top-message { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; }
+        .header-top-message i { color: var(--gold); }
+        .header-top-message span { color: var(--gold); font-weight: 700; }
+        .customer-service { display: flex; align-items: center; gap: 1rem; }
+        .service-item { display: flex; align-items: center; gap: 0.5rem; }
+        .service-item i { font-size: 0.875rem; color: var(--gold); }
+        .service-info h4 { font-size: 0.625rem; font-weight: 500; opacity: 0.8; }
+        .service-info a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.688rem; transition: var(--transition); }
+        .service-info a:hover { color: var(--gold); }
+
+        /* Header Main */
+        .header-main { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-main .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-height); padding: 0.5rem var(--container-padding); flex-wrap: wrap; }
+        .logo { flex-shrink: 0; }
+        .logo img { height: 45px; width: auto; transition: var(--transition); }
+        .logo img:hover { transform: scale(1.02); }
+        .search-wrapper { flex: 1; max-width: 450px; min-width: 200px; }
+        .search-form { display: flex; border: 2px solid var(--gray-light); border-radius: var(--border-radius-full); overflow: hidden; transition: var(--transition); width: 100%; }
+        .search-form:focus-within { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .search-input { flex: 1; padding: 0.6rem 1rem; border: none; outline: none; font-size: 0.813rem; min-width: 0; width: 100%; }
+        .search-btn { background: var(--gold-gradient); border: none; padding: 0.6rem 1.2rem; cursor: pointer; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; font-size: 0.813rem; white-space: nowrap; flex-shrink: 0; }
+        .search-btn span { display: inline; }
+        .search-btn:hover { opacity: 0.9; }
+        .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+        .action-btn { position: relative; width: 42px; height: 42px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--gray-light); cursor: pointer; transition: var(--transition); color: var(--text-dark); font-size: 1.125rem; text-decoration: none; }
+        .action-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--primary-black); transform: translateY(-2px); }
+        .cart-badge, .wishlist-badge { position: absolute; top: -5px; right: -5px; background: var(--gold-gradient); color: var(--primary-black); font-size: 0.563rem; font-weight: 800; min-width: 16px; height: 16px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; padding: 0 3px; border: 1px solid var(--white); }
+
+        /* Navigation */
+        .nav-wrapper { background: var(--white); border-bottom: 1px solid var(--gray-light); position: sticky; top: var(--header-height); z-index: 999; }
+        .nav-container { display: flex; align-items: center; gap: 1rem; padding: 0.5rem var(--container-padding); position: relative; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; z-index: 2001; position: relative; }
+        .hamburger span { display: block; width: 26px; height: 2.5px; background: var(--primary-black); border-radius: 2px; transition: var(--transition); transform-origin: center; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .main-nav { flex: 1; }
+        .nav-list { display: flex; list-style: none; gap: 0; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        .nav-link { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.75rem 1rem; color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.813rem; transition: var(--transition); border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 220px; box-shadow: var(--shadow-lg); border-radius: var(--border-radius); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition); z-index: 100; border: 1px solid var(--gray-light); }
+        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 0.7rem 1.2rem; color: var(--text-dark); text-decoration: none; transition: var(--transition); font-size: 0.813rem; }
+        .dropdown-item:hover { background: rgba(212, 175, 55, 0.1); color: var(--gold-dark); padding-left: 1.5rem; }
+
+        /* Overlay */
+        .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1999; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .menu-overlay.active { display: block; opacity: 1; }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; height: 100dvh; background: var(--white); box-shadow: var(--shadow-lg); z-index: 2000; transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; display: flex; flex-direction: column; }
+        .mobile-sidebar.active { left: 0; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: var(--primary-black); color: var(--gold); flex-shrink: 0; border-bottom: 2px solid var(--gold); }
+        .sidebar-header h3 { font-size: 1.1rem; font-family: var(--font-serif); display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+        .sidebar-close { background: rgba(255,255,255,0.1); border: none; font-size: 1.25rem; color: var(--gold); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
+        .sidebar-close:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-search { padding: 1rem 1.2rem; border-bottom: 1px solid var(--gray-light); flex-shrink: 0; }
+        .sidebar-search .search-form { border: 1px solid var(--gray-light); display: flex; border-radius: var(--border-radius-full); overflow: hidden; width: 100%; }
+        .sidebar-search .search-input { flex: 1; padding: 0.6rem 1rem; border: none; outline: none; font-size: 0.85rem; min-width: 0; width: 100%; }
+        .sidebar-search .search-btn { background: var(--gold-gradient); border: none; padding: 0.6rem 1rem; cursor: pointer; color: var(--primary-black); font-size: 0.9rem; flex-shrink: 0; }
+        .sidebar-nav-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0.5rem 0; }
+        .sidebar-nav { list-style: none; padding: 0; margin: 0; }
+        .sidebar-nav-item { border-bottom: 1px solid var(--gray-light); }
+        .sidebar-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.2rem; color: var(--text-dark); text-decoration: none; transition: var(--transition); font-weight: 500; cursor: pointer; font-size: 0.9rem; -webkit-tap-highlight-color: transparent; user-select: none; width: 100%; }
+        .sidebar-nav-link:hover, .sidebar-nav-link:active { background: rgba(212, 175, 55, 0.08); color: var(--gold-dark); }
+        .sidebar-nav-link span { display: flex; align-items: center; gap: 0.85rem; flex: 1; }
+        .sidebar-nav-link span i { width: 26px; color: var(--gold-dark); font-size: 1rem; text-align: center; }
+        .sidebar-nav-link .chevron { font-size: 0.75rem; transition: transform 0.3s ease; color: var(--gray-medium); flex-shrink: 0; }
+        .sidebar-nav-link.expanded .chevron { transform: rotate(90deg); color: var(--gold-dark); }
+        .sidebar-submenu { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--white-off); border-left: 3px solid var(--gold); margin-left: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; }
+        .sidebar-submenu.active { max-height: 600px; }
+        .sidebar-submenu-item { border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .sidebar-submenu-link { display: block; padding: 0.75rem 1rem 0.75rem 2rem; color: var(--text-gray); text-decoration: none; font-size: 0.85rem; transition: var(--transition); -webkit-tap-highlight-color: transparent; }
+        .sidebar-submenu-link:hover, .sidebar-submenu-link:active { color: var(--gold-dark); background: rgba(212, 175, 55, 0.05); padding-left: 2.2rem; }
+        .sidebar-submenu-link::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-right: 8px; opacity: 0.6; vertical-align: middle; }
+        .sidebar-footer { padding: 1rem 1.2rem; border-top: 1px solid var(--gray-light); background: var(--white-off); flex-shrink: 0; }
+        .sidebar-auth-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem; border-radius: var(--border-radius); background: var(--primary-black); color: var(--gold); border: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); margin-bottom: 0.75rem; }
+        .sidebar-auth-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-contact { margin-top: 0.75rem; }
+        .sidebar-contact-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; color: var(--text-gray); font-size: 0.8rem; }
+        .sidebar-contact-item i { color: var(--gold-dark); width: 20px; font-size: 0.85rem; text-align: center; }
+        .sidebar-social { display: flex; gap: 10px; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-light); }
+        .sidebar-social-link { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gray-light); display: flex; align-items: center; justify-content: center; color: var(--gold-dark); text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
+        .sidebar-social-link:hover { background: var(--primary-black); border-color: var(--primary-black); color: var(--gold); }
+
+        /* Hero Section */
+        .store-hero { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); padding: 3rem 0; position: relative; overflow: hidden; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--white); font-family: var(--font-serif); }
+        .hero-text h1 span { color: var(--gold); }
+        .hero-text p { font-size: 1rem; color: var(--gray-light); margin-bottom: 2rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--gold-gradient); color: var(--primary-black); text-decoration: none; border-radius: var(--border-radius-full); font-weight: 700; transition: var(--transition); border: none; cursor: pointer; font-size: 0.875rem; }
+        .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: var(--gold-gradient); color: var(--primary-black); }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--gold-shadow); }
+        .hero-image img { width: 100%; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-lg); border: 3px solid var(--gold); }
+
+        /* Categories */
+        .categories-section { padding: 3rem 0; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .section-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; font-family: var(--font-serif); position: relative; padding-bottom: 0.5rem; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold-gradient); }
+        .categories-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+        .category-card { background: var(--white); border-radius: var(--border-radius-lg); padding: 1.2rem; text-align: center; text-decoration: none; color: var(--text-dark); transition: var(--transition); border: 1px solid var(--gray-light); cursor: pointer; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .category-icon { width: 60px; height: 60px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; }
+        .category-icon i { font-size: 1.8rem; color: var(--primary-black); }
+        .category-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .category-card p { font-size: 0.7rem; color: var(--gray-medium); }
+
+        /* Products */
+        .products-section { padding: 3rem 0; background: var(--white-off); }
+        .filter-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.4rem 1.2rem; background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--border-radius-full); font-size: 0.813rem; cursor: pointer; transition: var(--transition); }
+        .filter-btn.active, .filter-btn:hover { background: var(--gold-gradient); border-color: var(--gold); color: var(--primary-black); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .product-card { background: var(--white); border-radius: var(--border-radius-lg); overflow: hidden; transition: var(--transition); border: 1px solid var(--gray-light); box-shadow: var(--shadow); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .product-image { position: relative; height: 220px; overflow: hidden; background: var(--white-off); }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: var(--gold-gradient); padding: 0.25rem 0.75rem; border-radius: var(--border-radius-full); font-size: 0.688rem; font-weight: 700; }
+        .product-wishlist { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--gray-light); color: var(--gray-medium); }
+        .product-wishlist:hover { background: var(--gold); color: var(--primary-black); }
+        .product-info { padding: 1rem; }
+        .product-category { font-size: 0.688rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; font-weight: 600; }
+        .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+        .product-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .spec-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; color: var(--text-gray); background: var(--white-off); padding: 0.2rem 0.5rem; border-radius: var(--border-radius-full); }
+        .spec-item i { color: var(--gold); font-size: 0.7rem; }
+        .product-price { font-size: 1.25rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 0.75rem; }
+        .old-price { font-size: 0.813rem; color: var(--gray-medium); text-decoration: line-through; margin-left: 0.5rem; font-weight: normal; }
+        .product-actions { display: flex; gap: 0.5rem; }
+        .product-actions .btn { flex: 1; padding: 0.5rem; font-size: 0.75rem; justify-content: center; }
+
+        /* Search Results */
+        .clear-search { background: none; border: 1px solid var(--gray-light); padding: 0.3rem 0.8rem; border-radius: var(--border-radius-full); font-size: 0.75rem; color: var(--text-gray); cursor: pointer; transition: var(--transition); }
+        .clear-search:hover { background: var(--gold); border-color: var(--gold); color: var(--primary-black); }
+
+        /* Features */
+        .features-section { padding: 3rem 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+        .feature-card { text-align: center; padding: 1.5rem; background: var(--white); border-radius: var(--border-radius-lg); border: 1px solid var(--gray-light); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-3px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .feature-icon { width: 60px; height: 60px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .feature-icon i { font-size: 1.5rem; color: var(--primary-black); }
+        .feature-card h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .feature-card p { font-size: 0.688rem; color: var(--gray-medium); }
+
+        /* Newsletter */
+        .newsletter-section { background: var(--white-off); padding: 3rem 0; }
+        .newsletter-wrapper { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .newsletter-content { display: flex; align-items: center; gap: 1rem; }
+        .newsletter-icon { width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .newsletter-icon i { font-size: 1.25rem; color: var(--primary-black); }
+        .newsletter-text h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .newsletter-text p { font-size: 0.813rem; color: var(--text-gray); }
+        .newsletter-form { display: flex; gap: 0.5rem; min-width: 350px; }
+        .newsletter-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid var(--gray-light); border-radius: var(--border-radius-full); font-size: 0.813rem; outline: none; }
+        .newsletter-input:focus { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .newsletter-btn { padding: 0.7rem 1.5rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius-full); font-weight: 600; cursor: pointer; font-size: 0.813rem; }
+
+        /* Footer */
+        .footer { background: var(--primary-black); color: var(--white); padding: 3rem 0 0; margin-top: auto; border-top: 3px solid var(--gold); }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .footer-about p { color: var(--gray-light); margin: 1rem 0; font-size: 0.813rem; line-height: 1.6; }
+        .footer-logo img { height: 45px; width: auto; margin-bottom: 1rem; }
+        .footer-title { font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.5rem; color: var(--gold); }
+        .footer-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--gold-gradient); }
+        .footer-links { list-style: none; }
+        .footer-link { margin-bottom: 0.7rem; }
+        .footer-link a { color: var(--gray-light); text-decoration: none; transition: var(--transition); font-size: 0.813rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .footer-link a:hover { color: var(--gold); transform: translateX(5px); }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.7rem; color: var(--gray-light); font-size: 0.813rem; }
+        .contact-item i { color: var(--gold); width: 20px; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .social-link { width: 36px; height: 36px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; transition: var(--transition); }
+        .social-link:hover { background: var(--gold); color: var(--primary-black); transform: translateY(-3px); }
+        .footer-bottom { padding: 1.5rem 0; }
+        .footer-bottom .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .copyright { font-size: 0.75rem; color: var(--gray-light); }
+        .copyright a { color: var(--gold); text-decoration: none; }
+        .payment-methods { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .payment-methods img { height: 30px; width: auto; background: var(--white); padding: 0.25rem 0.5rem; border-radius: var(--border-radius); }
+
+        /* Floating Buttons */
+        .floating-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 0.5rem; z-index: 998; }
+        .whatsapp-btn { width: 50px; height: 50px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg); transition: var(--transition); }
+        .whatsapp-btn img { width: 28px; height: 28px; }
+        .back-to-top { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--primary-black); font-size: 1.125rem; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+
+        /* Modal */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 3000; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--white); border-radius: var(--border-radius-lg); padding: 2rem; max-width: 440px; width: 90%; position: relative; transform: scale(0.95); transition: var(--transition); }
+        .modal.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.25rem; cursor: pointer; }
+        .auth-tabs { display: flex; gap: 1rem; margin: 1rem 0 1.5rem; border-bottom: 2px solid var(--gray-light); }
+        .auth-tab { flex: 1; padding: 0.7rem; background: none; border: none; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; font-size: 0.875rem; }
+        .auth-tab.active { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.35rem; font-weight: 500; font-size: 0.813rem; }
+        .form-group input { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--gray-light); border-radius: var(--border-radius); font-size: 0.875rem; }
+        .auth-submit { width: 100%; padding: 0.8rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius); font-weight: 700; cursor: pointer; margin-top: 0.5rem; }
+        .notification-container { position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 0.5rem; }
+        .notification { background: var(--white); padding: 0.8rem 1.2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.75rem; transform: translateX(400px); transition: transform 0.3s ease; max-width: 360px; border-left: 4px solid; }
+        .notification.show { transform: translateX(0); }
+        .notification-success { border-left-color: var(--success); }
+        .notification-error { border-left-color: var(--danger); }
+
+        /* Responsive */
+        @media (max-width: 992px) { 
+            .categories-grid { grid-template-columns: repeat(3, 1fr); } 
+            .features-grid { grid-template-columns: repeat(3, 1fr); } 
+            .footer-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 860px) {
+            .hamburger { display: flex; }
+            .main-nav { display: none; }
+            .header-main .container { flex-direction: column; align-items: stretch; gap: 0.75rem; padding: 0.5rem var(--container-padding); }
+            .header-main .container .logo { order: 1; align-self: flex-start; }
+            .header-main .container .header-actions { order: 2; align-self: flex-end; margin-top: -50px; }
+            .header-main .container .search-wrapper { order: 3; max-width: 100%; width: 100%; }
+            .search-btn span { display: none; }
+            .search-btn { padding: 0.6rem 1rem; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .products-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .newsletter-wrapper { flex-direction: column; text-align: center; }
+            .newsletter-content { flex-direction: column; }
+            .newsletter-form { min-width: 100%; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-title::after { left: 50%; transform: translateX(-50%); }
+            .footer-links { text-align: center; }
+            .footer-link a { justify-content: center; }
+            .contact-item { justify-content: center; }
+            .social-links { justify-content: center; }
+            .header-actions { gap: 0.5rem; }
+            .action-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .header-top .container { flex-direction: column; text-align: center; }
+            .customer-service { justify-content: center; flex-wrap: wrap; }
+            .mobile-sidebar { max-width: 100%; width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .header-main .container { padding: 0.4rem 0.75rem; }
+            .header-main .container .header-actions { margin-top: -42px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .header-actions { gap: 0.4rem; }
+            .action-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+            .logo img { height: 38px; }
+            .search-wrapper { max-width: 100%; min-width: 100%; }
+            .search-input { font-size: 0.75rem; }
+            .sidebar-header h3 { font-size: 1rem; }
+            .sidebar-nav-link { font-size: 0.85rem; padding: 0.8rem 1rem; }
+            .sidebar-submenu-link { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-message"><i class="fas fa-crown"></i><p>Bienvenue chez <span>Le Paname Service</span> | Livraison gratuite dès 5000 Fcfa</p></div>
+            <div class="customer-service">
+                <div class="service-item"><i class="fas fa-headset"></i><div class="service-info"><h4>Service Client</h4><p><a href="tel:+237657715482">+237 657 71 54 82</a></p></div></div>
+                <div class="service-item"><i class="fas fa-envelope"></i><div class="service-info"><h4>Email</h4><p><a href="mailto:lepanameservice@gmail.com">lepanameservice@gmail.com</a></p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo"><a href="index.html"><img src="assets/logoPANSERV.png" alt="Le Paname Service"></a></div>
+            <div class="header-actions">
+                <button class="action-btn" data-modal="auth" aria-label="Mon compte"><i class="far fa-user"></i></button>
+                <a href="pages/wishlist.htm" class="action-btn" aria-label="Favoris"><i class="far fa-heart"></i><span class="wishlist-badge">0</span></a>
+                <a href="pages/cart.html" class="action-btn" aria-label="Panier"><i class="fas fa-shopping-bag"></i><span class="cart-badge">0</span></a>
+            </div>
+            <div class="search-wrapper">
+                <form class="search-form" id="desktopSearchForm">
+                    <input type="search" class="search-input" placeholder="Rechercher un véhicule (Toyota, Honda, Yamaha, 4500000...)..." id="desktopSearchInput" aria-label="Rechercher">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i><span>Rechercher</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper">
+        <div class="container nav-container">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="panamestore.html" class="nav-link">Paname Store</a></li>
+                    <li class="nav-item"><a href="panamemarket.html" class="nav-link">Paname Market</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="pages/panamewedding.html" class="dropdown-item">Paname Wedding</a>
+                            <a href="pages/panamehouse.html" class="dropdown-item">Paname House</a>
+                            <a href="pages/panametravel.html" class="dropdown-item">Paname Travel</a>
+                            <a href="pages/panameevent.html" class="dropdown-item">Paname Event</a>
+                            <a href="pages/panameproduction.html" class="dropdown-item">Paname Production</a>
+                            <a href="pages/panamesecurity.html" class="dropdown-item">Paname Security</a>
+                            <a href="pages/panameluxury.html" class="dropdown-item">Paname Luxury</a>
+                            <a href="pages/livraisonexpress.html" class="dropdown-item">Livraison Express</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="sante.html" class="nav-link">Santé</a></li>
+                    <li class="nav-item"><a href="auto_moto.html" class="nav-link active">Auto-Moto</a></li>
+                    <li class="nav-item"><a href="montres-bijoux.html" class="nav-link">Montres & Bijoux</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay + Mobile Sidebar -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header"><h3><i class="fas fa-crown"></i> Le Paname Service</h3><button class="sidebar-close" id="sidebarCloseBtn" aria-label="Fermer"><i class="fas fa-times"></i></button></div>
+        <div class="sidebar-search">
+            <form class="search-form" id="mobileSearchForm">
+                <input type="search" class="search-input" placeholder="Rechercher un véhicule..." id="mobileSearchInput">
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="sidebar-nav-scroll">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item"><a href="index.html" class="sidebar-nav-link"><span><i class="fas fa-home"></i> Accueil</span></a></li>
+                <li class="sidebar-nav-item"><a href="panamestore.html" class="sidebar-nav-link"><span><i class="fas fa-laptop"></i> Paname Store</span></a></li>
+                <li class="sidebar-nav-item"><a href="panamemarket.html" class="sidebar-nav-link"><span><i class="fas fa-shopping-cart"></i> Paname Market</span></a></li>
+                <li class="sidebar-nav-item">
+                    <div class="sidebar-nav-link" onclick="toggleSubmenu(this)" role="button" tabindex="0"><span><i class="fas fa-concierge-bell"></i> Services</span><i class="fas fa-chevron-right chevron"></i></div>
+                    <ul class="sidebar-submenu">
+                        <li class="sidebar-submenu-item"><a href="pages/panamewedding.html" class="sidebar-submenu-link">Paname Wedding</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panamehouse.html" class="sidebar-submenu-link">Paname House</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panametravel.html" class="sidebar-submenu-link">Paname Travel</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameevent.html" class="sidebar-submenu-link">Paname Event</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameproduction.html" class="sidebar-submenu-link">Paname Production</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panamesecurity.html" class="sidebar-submenu-link">Paname Security</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameluxury.html" class="sidebar-submenu-link">Paname Luxury</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/livraisonexpress.html" class="sidebar-submenu-link">Livraison Express</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item"><a href="sante.html" class="sidebar-nav-link"><span><i class="fas fa-heartbeat"></i> Santé</span></a></li>
+                <li class="sidebar-nav-item"><a href="auto_moto.html" class="sidebar-nav-link active"><span><i class="fas fa-car"></i> Auto-Moto</span></a></li>
+                <li class="sidebar-nav-item"><a href="montres-bijoux.html" class="sidebar-nav-link"><span><i class="fas fa-gem"></i> Montres & Bijoux</span></a></li>
+                <li class="sidebar-nav-item"><a href="contact.html" class="sidebar-nav-link"><span><i class="fas fa-envelope"></i> Contact</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <button class="sidebar-auth-btn" data-modal="auth"><i class="far fa-user"></i><span>Mon compte</span></button>
+            <div class="sidebar-contact">
+                <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+            </div>
+            <div class="sidebar-social">
+                <a href="https://www.facebook.com/profile.php?id=61557575415489" class="sidebar-social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/lepanameservice237" class="sidebar-social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+237657715482" class="sidebar-social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@lepanameservice237" class="sidebar-social-link"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="store-hero"><div class="container"><div class="hero-content">
+        <div class="hero-text"><h1><span>Paname Auto-Moto</span><br>La liberté sur deux et quatre roues</h1><p>Découvrez notre large sélection de voitures et motos d'occasion. Qualité garantie, prix compétitifs et service après-vente inclus.</p>
+            <div class="hero-buttons"><a href="#products" class="btn"><i class="fas fa-car"></i> Voir les véhicules</a><a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Assistance</a></div></div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600" alt="Voiture de luxe Paname Auto-Moto"></div>
+    </div></div></section>
+
+    <!-- Categories -->
+    <section class="categories-section"><div class="container">
+        <div class="section-header"><h2 class="section-title">Catégories</h2></div>
+        <div class="categories-grid">
+            <div class="category-card" onclick="filterProducts('all')"><div class="category-icon"><i class="fas fa-border-all"></i></div><h3>Tous</h3><p>Tous les véhicules</p></div>
+            <div class="category-card" onclick="filterProducts('voiture')"><div class="category-icon"><i class="fas fa-car"></i></div><h3>Voitures</h3><p>Berlines, citadines</p></div>
+            <div class="category-card" onclick="filterProducts('suv')"><div class="category-icon"><i class="fas fa-truck"></i></div><h3>SUV & 4x4</h3><p>Grands espaces</p></div>
+            <div class="category-card" onclick="filterProducts('moto')"><div class="category-icon"><i class="fas fa-motorcycle"></i></div><h3>Motos Roadster</h3><p>Agilité urbaine</p></div>
+            <div class="category-card" onclick="filterProducts('sport')"><div class="category-icon"><i class="fas fa-flag-checkered"></i></div><h3>Motos Sport</h3><p>Adrénaline</p></div>
+            <div class="category-card" onclick="filterProducts('custom')"><div class="category-icon"><i class="fas fa-skull"></i></div><h3>Custom</h3><p>Style unique</p></div>
+        </div>
+    </div></section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="sectionTitle">Nos Véhicules</h2>
+                <div>
+                    <button class="clear-search" id="clearSearchBtn" style="display: none;">Afficher tous les véhicules</button>
+                </div>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">Tous</button>
+                <button class="filter-btn" onclick="filterProducts('voiture')">Voitures</button>
+                <button class="filter-btn" onclick="filterProducts('suv')">SUV</button>
+                <button class="filter-btn" onclick="filterProducts('moto')">Motos</button>
+                <button class="filter-btn" onclick="filterProducts('sport')">Sport</button>
+                <button class="filter-btn" onclick="filterProducts('custom')">Custom</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section"><div class="container"><div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-check-circle"></i></div><h4>Véhicules Inspectés</h4><p>Contrôle technique complet</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-file-signature"></i></div><h4>Papiers en Ordre</h4><p>Carte grise, CT fournis</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h4>Garantie 6 mois</h4><p>Sur tout le véhicule</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div><h4>Financement</h4><p>Crédit disponible</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-truck-moving"></i></div><h4>Livraison</h4><p>À domicile possible</p></div>
+    </div></div></section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section"><div class="container"><div class="newsletter-wrapper">
+        <div class="newsletter-content"><div class="newsletter-icon"><i class="fas fa-envelope-open-text"></i></div><div class="newsletter-text"><h3>Restez informé</h3><p>Recevez nos offres exclusives</p></div></div>
+        <form class="newsletter-form" id="newsletterForm"><input type="email" class="newsletter-input" placeholder="Votre adresse email" required><button type="submit" class="newsletter-btn">S'inscrire <i class="fas fa-paper-plane"></i></button></form>
+    </div></div></section>
+
+    <!-- Footer -->
+    <footer class="footer"><div class="container"><div class="footer-grid">
+        <div class="footer-about"><div class="footer-logo"><img src="assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Le Paname Service"></div><p>Le Paname Service - Votre partenaire de confiance pour tous vos besoins en auto-moto au Cameroun.</p><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div></div>
+        <div><h4 class="footer-title">E-commerce</h4><ul class="footer-links"><li class="footer-link"><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li><li class="footer-link"><a href="panamestore.html"><i class="fas fa-chevron-right"></i> Paname Store</a></li><li class="footer-link"><a href="panamemarket.html"><i class="fas fa-chevron-right"></i> Paname Market</a></li><li class="footer-link"><a href="sante.html"><i class="fas fa-chevron-right"></i> Santé</a></li><li class="footer-link"><a href="auto_moto.html"><i class="fas fa-chevron-right"></i> Auto-Moto</a></li><li class="footer-link"><a href="montres-bijoux.html"><i class="fas fa-chevron-right"></i> Montres & Bijoux</a></li></ul></div>
+        <div><h4 class="footer-title">Nos services</h4><ul class="footer-links"><li class="footer-link"><a href="pages/panamewedding.html"><i class="fas fa-chevron-right"></i> Paname Wedding</a></li><li class="footer-link"><a href="pages/panamehouse.html"><i class="fas fa-chevron-right"></i> Paname House</a></li><li class="footer-link"><a href="pages/panametravel.html"><i class="fas fa-chevron-right"></i> Paname Travel</a></li><li class="footer-link"><a href="pages/panameevent.html"><i class="fas fa-chevron-right"></i> Paname Event</a></li><li class="footer-link"><a href="pages/panameproduction.html"><i class="fas fa-chevron-right"></i> Paname Production</a></li><li class="footer-link"><a href="pages/panamesecurity.html"><i class="fas fa-chevron-right"></i> Paname Security</a></li><li class="footer-link"><a href="pages/livraisonexpress.html"><i class="fas fa-chevron-right"></i> Livraison Express</a></li></ul></div>
+        <div><h4 class="footer-title">Contact</h4><div class="contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div><div class="social-links"><a href="https://www.facebook.com/profile.php?id=61557575415489" class="social-link"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/lepanameservice237" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://wa.me/+237657715482" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@lepanameservice237" class="social-link"><i class="fab fa-tiktok"></i></a></div></div>
+    </div><div class="footer-bottom"><div class="container"><div class="copyright">&copy; 2025 <a href="index.html">Le Paname Service</a>. Tous droits réservés.</div><div class="payment-methods"><img src="assets/om.jpg" alt="Orange Money"><img src="assets/momo.jpg" alt="MTN Mobile Money"><img src="assets/paypal.jpg" alt="PayPal"><img src="assets/image/payment-1.png" alt="Visa"><img src="assets/image/payment-2.png" alt="Mastercard"></div></div></div></div></footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+237657715482" class="whatsapp-btn" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+        <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Modal Auth -->
+    <div class="modal" id="authModal"><div class="modal-content"><button class="modal-close" data-modal-close><i class="fas fa-times"></i></button><div class="modal-header"><h2>Bienvenue</h2><p>Connectez-vous ou créez un compte</p></div><div class="auth-tabs"><button class="auth-tab active" data-tab="login">Connexion</button><button class="auth-tab" data-tab="register">Inscription</button></div><form class="auth-form active" id="loginForm"><div class="form-group"><label>Email</label><input type="email" required></div><div class="form-group"><label>Mot de passe</label><input type="password" required></div><button type="submit" class="auth-submit">Se connecter</button></form><form class="auth-form" id="registerForm"><div class="form-group"><label>Nom complet</label><input type="text" required></div><div class="form-group"><label>Email</label><input type="email" required></div><div class="form-group"><label>Téléphone</label><input type="tel" required></div><div class="form-group"><label>Mot de passe</label><input type="password" required></div><div class="form-group"><label>Confirmer</label><input type="password" required></div><button type="submit" class="auth-submit">S'inscrire</button></form></div></div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        // Produits Auto-Moto - Voitures et Motos
+        const products = [
+            // Voitures (6)
+            { id: 'voiture-001', name: 'Toyota Camry 2020', category: 'voiture', price: 18500000, oldPrice: 21000000, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400', badge: '-12%', year: '2020', mileage: '45 000 km', fuel: 'Essence', transmission: 'Automatique', keywords: 'toyota camry voiture berline toyota camry 2020' },
+            { id: 'voiture-002', name: 'Honda Civic 2019', category: 'voiture', price: 12500000, oldPrice: 15000000, image: 'https://images.unsplash.com/photo-1600508774634-4e11e4d400ce?w=400', badge: '-17%', year: '2019', mileage: '62 000 km', fuel: 'Essence', transmission: 'Manuelle', keywords: 'honda civic voiture berline honda civic 2019' },
+            { id: 'voiture-003', name: 'Mercedes Classe C', category: 'voiture', price: 28500000, oldPrice: 35000000, image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f1868?w=400', badge: '-19%', year: '2021', mileage: '38 000 km', fuel: 'Diesel', transmission: 'Automatique', keywords: 'mercedes classe c berline mercedes luxe' },
+            { id: 'voiture-004', name: 'BMW Série 3', category: 'voiture', price: 22500000, oldPrice: 28000000, image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400', badge: '-20%', year: '2020', mileage: '52 000 km', fuel: 'Essence', transmission: 'Automatique', keywords: 'bmw série 3 berline bmw' },
+            { id: 'voiture-005', name: 'Volkswagen Golf 7', category: 'voiture', price: 9500000, oldPrice: 12000000, image: 'https://images.unsplash.com/photo-1625047509168-a06d5eee077d?w=400', badge: '-21%', year: '2018', mileage: '78 000 km', fuel: 'Diesel', transmission: 'Manuelle', keywords: 'volkswagen golf 7 compacte' },
+            { id: 'voiture-006', name: 'Renault Clio 4', category: 'voiture', price: 5500000, oldPrice: 7500000, image: 'https://images.unsplash.com/photo-1603978429167-b9ae352e70f4?w=400', badge: '-27%', year: '2017', mileage: '95 000 km', fuel: 'Essence', transmission: 'Manuelle', keywords: 'renault clio 4 citadine' },
+            // SUV (4)
+            { id: 'suv-001', name: 'Toyota RAV4', category: 'suv', price: 19500000, oldPrice: 23000000, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400', badge: '-15%', year: '2020', mileage: '48 000 km', fuel: 'Essence', transmission: 'Automatique', keywords: 'toyota rav4 suv 4x4' },
+            { id: 'suv-002', name: 'Hyundai Tucson', category: 'suv', price: 14500000, oldPrice: 18000000, image: 'https://images.unsplash.com/photo-1626766206893-29f6cfe4fc54?w=400', badge: '-19%', year: '2019', mileage: '55 000 km', fuel: 'Diesel', transmission: 'Automatique', keywords: 'hyundai tucson suv' },
+            { id: 'suv-003', name: 'Kia Sportage', category: 'suv', price: 13500000, oldPrice: 16500000, image: 'https://images.unsplash.com/photo-1623105039983-abd2d5c8fa28?w=400', badge: '-18%', year: '2019', mileage: '60 000 km', fuel: 'Diesel', transmission: 'Manuelle', keywords: 'kia sportage suv' },
+            { id: 'suv-004', name: 'Land Rover Evoque', category: 'suv', price: 32000000, oldPrice: 40000000, image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400', badge: '-20%', year: '2021', mileage: '32 000 km', fuel: 'Diesel', transmission: 'Automatique', keywords: 'land rover evoque suv luxe' },
+            // Motos Roadster (4)
+            { id: 'moto-001', name: 'Yamaha MT-07', category: 'moto', price: 4500000, oldPrice: 5500000, image: 'https://images.unsplash.com/photo-1591637333184-19aaab7c6f4c?w=400', badge: '-18%', year: '2020', mileage: '12 000 km', cylinder: '689cc', transmission: 'Manuelle', keywords: 'yamaha mt07 moto roadster' },
+            { id: 'moto-002', name: 'Honda CB650R', category: 'moto', price: 5500000, oldPrice: 6800000, image: 'https://images.unsplash.com/photo-1632505481442-f9b6f0e4b5d1?w=400', badge: '-19%', year: '2021', mileage: '8 500 km', cylinder: '649cc', transmission: 'Manuelle', keywords: 'honda cb650r moto roadster' },
+            { id: 'moto-003', name: 'Yamaha MT-09', category: 'moto', price: 5800000, oldPrice: 7200000, image: 'https://images.unsplash.com/photo-1591637333184-19aaab7c6f4c?w=400', badge: '-19%', year: '2020', mileage: '10 000 km', cylinder: '847cc', transmission: 'Manuelle', keywords: 'yamaha mt09 moto roadster' },
+            { id: 'moto-004', name: 'KTM Duke 790', category: 'moto', price: 6200000, oldPrice: 7800000, image: 'https://images.unsplash.com/photo-1608981867010-ec2c4f0e5d1f?w=400', badge: '-21%', year: '2020', mileage: '9 200 km', cylinder: '799cc', transmission: 'Manuelle', keywords: 'ktm duke 790 moto roadster' },
+            // Motos Sport (5)
+            { id: 'sport-001', name: 'Kawasaki Ninja 400', category: 'sport', price: 3800000, oldPrice: 4800000, image: 'https://images.unsplash.com/photo-1618848592829-e2dae4f82eb3?w=400', badge: '-21%', year: '2020', mileage: '15 000 km', cylinder: '399cc', transmission: 'Manuelle', keywords: 'kawasaki ninja 400 moto sport' },
+            { id: 'sport-002', name: 'Suzuki GSX-R750', category: 'sport', price: 6500000, oldPrice: 8000000, image: 'https://images.unsplash.com/photo-1598363084108-6df9de7a0353?w=400', badge: '-19%', year: '2019', mileage: '18 000 km', cylinder: '750cc', transmission: 'Manuelle', keywords: 'suzuki gsx r750 moto sport' },
+            { id: 'sport-003', name: 'BMW S1000RR', category: 'sport', price: 12500000, oldPrice: 16000000, image: 'https://images.unsplash.com/photo-1618848592829-e2dae4f82eb3?w=400', badge: '-22%', year: '2021', mileage: '6 000 km', cylinder: '999cc', transmission: 'Manuelle', keywords: 'bmw s1000rr moto sport' },
+            { id: 'sport-004', name: 'Honda CBR600RR', category: 'sport', price: 5200000, oldPrice: 6800000, image: 'https://images.unsplash.com/photo-1632505481442-f9b6f0e4b5d1?w=400', badge: '-24%', year: '2019', mileage: '14 000 km', cylinder: '599cc', transmission: 'Manuelle', keywords: 'honda cbr600rr moto sport' },
+            { id: 'sport-005', name: 'Yamaha R6', category: 'sport', price: 5800000, oldPrice: 7500000, image: 'https://images.unsplash.com/photo-1618848592829-e2dae4f82eb3?w=400', badge: '-23%', year: '2020', mileage: '11 500 km', cylinder: '599cc', transmission: 'Manuelle', keywords: 'yamaha r6 moto sport' },
+            // Motos Custom (4)
+            { id: 'custom-001', name: 'Harley-Davidson Iron 883', category: 'custom', price: 9800000, oldPrice: 12500000, image: 'https://images.unsplash.com/photo-1608981867010-ec2c4f0e5d1f?w=400', badge: '-22%', year: '2019', mileage: '8 000 km', cylinder: '883cc', transmission: 'Manuelle', keywords: 'harley davidson iron 883 moto custom' },
+            { id: 'custom-002', name: 'Indian Scout', category: 'custom', price: 11200000, oldPrice: 14500000, image: 'https://images.unsplash.com/photo-1608981867010-ec2c4f0e5d1f?w=400', badge: '-23%', year: '2020', mileage: '7 200 km', cylinder: '1133cc', transmission: 'Manuelle', keywords: 'indian scout moto custom' },
+            { id: 'custom-003', name: 'Triumph Bonneville T120', category: 'custom', price: 8500000, oldPrice: 11000000, image: 'https://images.unsplash.com/photo-1591637333184-19aaab7c6f4c?w=400', badge: '-23%', year: '2020', mileage: '9 500 km', cylinder: '1200cc', transmission: 'Manuelle', keywords: 'triumph bonneville t120 moto custom' },
+            { id: 'custom-004', name: 'Ducati Monster', category: 'custom', price: 8500000, oldPrice: 11000000, image: 'https://images.unsplash.com/photo-1632505481442-f9b6f0e4b5d1?w=400', badge: '-23%', year: '2020', mileage: '10 000 km', cylinder: '821cc', transmission: 'Manuelle', keywords: 'ducati monster moto custom' }
+        ];
+
+        let cartCount = 0, wishlistCount = 0;
+        let currentProducts = [...products];
+
+        function formatPrice(p) { return p.toLocaleString() + ' Fcfa'; }
+
+        function renderProducts(productList = null) {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            const productsToRender = productList || currentProducts;
+            
+            if (productsToRender.length === 0) {
+                grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-medium);"><i class="fas fa-search" style="font-size:3rem;display:block;opacity:0.3;margin-bottom:1rem;"></i><p style="font-size:1.1rem;font-weight:600;">Aucun véhicule trouvé</p><p style="font-size:0.9rem;">Essayez un autre terme de recherche (Toyota, Honda, Yamaha, 4500000...)</p></div>`;
+                return;
+            }
+            
+            grid.innerHTML = productsToRender.map(p => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge">${p.badge}</span>
+                        <div class="product-wishlist" onclick="addToWishlist('${p.id}')"><i class="far fa-heart"></i></div>
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x300?text=${encodeURIComponent(p.name)}'">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${p.category === 'voiture' ? 'Voiture' : p.category === 'suv' ? 'SUV' : p.category === 'moto' ? 'Moto Roadster' : p.category === 'sport' ? 'Moto Sport' : 'Moto Custom'}</div>
+                        <h3 class="product-name">${p.name}</h3>
+                        <div class="product-specs">
+                            <div class="spec-item"><i class="fas fa-calendar-alt"></i> ${p.year}</div>
+                            <div class="spec-item"><i class="fas fa-road"></i> ${p.mileage || p.cylinder}</div>
+                            ${p.fuel ? `<div class="spec-item"><i class="fas fa-gas-pump"></i> ${p.fuel}</div>` : ''}
+                            ${p.transmission ? `<div class="spec-item"><i class="fas fa-cogs"></i> ${p.transmission}</div>` : ''}
+                        </div>
+                        <div class="product-price">${formatPrice(p.price)}<span class="old-price">${formatPrice(p.oldPrice)}</span></div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="addToCart('${p.id}')"><i class="fas fa-shopping-cart"></i> Réserver</button>
+                            <button class="btn btn-outline" onclick="requestTestDrive('${p.id}')"><i class="fas fa-car"></i> Essai routier</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ==================== FONCTION DE RECHERCHE ====================
+        function searchProducts(query) {
+            const sectionTitle = document.getElementById('sectionTitle');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            
+            if (!query || query.trim() === '') {
+                currentProducts = [...products];
+                renderProducts();
+                if (sectionTitle) sectionTitle.innerHTML = 'Nos Véhicules';
+                if (clearBtn) clearBtn.style.display = 'none';
+                return;
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            
+            const filtered = products.filter(product => {
+                const nameMatch = product.name.toLowerCase().includes(searchTerm);
+                const categoryMatch = product.category.toLowerCase().includes(searchTerm);
+                const keywordsMatch = product.keywords && product.keywords.toLowerCase().includes(searchTerm);
+                const priceMatch = product.price.toString().includes(searchTerm);
+                
+                return nameMatch || categoryMatch || keywordsMatch || priceMatch;
+            });
+            
+            currentProducts = filtered;
+            renderProducts(filtered);
+            
+            if (sectionTitle) {
+                if (filtered.length > 0) {
+                    sectionTitle.innerHTML = `Résultats pour "${query}" (${filtered.length})`;
+                } else {
+                    sectionTitle.innerHTML = `Aucun résultat pour "${query}"`;
+                }
+            }
+            if (clearBtn) clearBtn.style.display = filtered.length !== products.length ? 'inline-block' : 'none';
+            
+            if (filtered.length > 0) {
+                showNotification('Recherche', `${filtered.length} véhicule(s) trouvé(s)`, 'success');
+            } else {
+                showNotification('Recherche', `Aucun véhicule trouvé pour "${query}". Essayez "Toyota", "Honda", "Yamaha" ou un prix comme 4500000`, 'error');
+            }
+        }
+
+        function filterProducts(category) {
+            const sectionTitle = document.getElementById('sectionTitle');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(event.target && event.target.classList) event.target.classList.add('active');
+            
+            if (category === 'all') {
+                currentProducts = [...products];
+                if (sectionTitle) sectionTitle.innerHTML = 'Nos Véhicules';
+            } else {
+                currentProducts = products.filter(p => p.category === category);
+                const titles = { voiture: 'Voitures', suv: 'SUV & 4x4', moto: 'Motos Roadster', sport: 'Motos Sport', custom: 'Motos Custom' };
+                if (sectionTitle) sectionTitle.innerHTML = titles[category] || 'Nos Véhicules';
+            }
+            renderProducts();
+            if (clearBtn) clearBtn.style.display = 'none';
+            document.getElementById('desktopSearchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+        }
+
+        function addToCart(id) { cartCount++; updateCartCount(); showNotification('Véhicule réservé', 'Un conseiller vous contactera sous 24h', 'success'); }
+        function addToWishlist(id) { wishlistCount++; updateWishlistCount(); showNotification('Favoris', 'Véhicule ajouté à vos favoris', 'success'); }
+        function requestTestDrive(id) { showNotification('Demande d\'essai', 'Un conseiller vous contactera pour planifier l\'essai', 'success'); }
+        function updateCartCount() { document.querySelectorAll('.cart-badge').forEach(el => { el.textContent = cartCount; el.style.display = cartCount > 0 ? 'flex' : 'none'; }); }
+        function updateWishlistCount() { document.querySelectorAll('.wishlist-badge').forEach(el => { el.textContent = wishlistCount; el.style.display = wishlistCount > 0 ? 'flex' : 'none'; }); }
+        function showNotification(title, msg, type) {
+            const container = document.getElementById('notificationContainer');
+            const n = document.createElement('div');
+            n.className = `notification notification-${type}`;
+            n.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i><div><strong>${title}</strong><p style="font-size:0.75rem;">${msg}</p></div><button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;"><i class="fas fa-times"></i></button>`;
+            container.appendChild(n);
+            setTimeout(() => n.classList.add('show'), 10);
+            setTimeout(() => { n.classList.remove('show'); setTimeout(() => n.remove(), 300); }, 4000);
+        }
+
+        // Recherche Desktop
+        document.getElementById('desktopSearchForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            searchProducts(document.getElementById('desktopSearchInput').value.trim());
+        });
+
+        // Recherche Mobile
+        document.getElementById('mobileSearchForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const q = document.getElementById('mobileSearchInput').value.trim();
+            if (q) { searchProducts(q); closeSidebar(); }
+        });
+
+        // Bouton effacer recherche
+        document.getElementById('clearSearchBtn')?.addEventListener('click', function() {
+            searchProducts('');
+            document.getElementById('desktopSearchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn[onclick="filterProducts(\'all\')"]')?.classList.add('active');
+        });
+
+        // Mobile Sidebar
+        const hamburgerBtn = document.getElementById('hamburgerBtn'), mobileSidebar = document.getElementById('mobileSidebar'), menuOverlay = document.getElementById('menuOverlay'), sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+        function openSidebar() { mobileSidebar?.classList.add('active'); menuOverlay?.classList.add('active'); hamburgerBtn?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { mobileSidebar?.classList.remove('active'); menuOverlay?.classList.remove('active'); hamburgerBtn?.classList.remove('active'); document.body.style.overflow = ''; document.querySelectorAll('.sidebar-nav-link.expanded').forEach(l => { l.classList.remove('expanded'); const s = l.nextElementSibling; if(s) s.classList.remove('active'); }); }
+        hamburgerBtn?.addEventListener('click', () => { mobileSidebar.classList.contains('active') ? closeSidebar() : openSidebar(); });
+        sidebarCloseBtn?.addEventListener('click', closeSidebar);
+        menuOverlay?.addEventListener('click', closeSidebar);
+
+        function toggleSubmenu(el) { const sub = el.nextElementSibling; const isExp = el.classList.contains('expanded'); document.querySelectorAll('.sidebar-nav-link.expanded').forEach(l => { if(l !== el) { l.classList.remove('expanded'); const s = l.nextElementSibling; if(s) s.classList.remove('active'); } }); if(isExp) { el.classList.remove('expanded'); if(sub) sub.classList.remove('active'); } else { el.classList.add('expanded'); if(sub) sub.classList.add('active'); } }
+
+        // Modal
+        const modal = document.getElementById('authModal'), modalTriggers = document.querySelectorAll('[data-modal="auth"]'), modalClose = document.querySelector('[data-modal-close]');
+        function openModal() { modal?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal?.classList.remove('active'); document.body.style.overflow = ''; }
+        modalTriggers.forEach(t => t.addEventListener('click', openModal)); modalClose?.addEventListener('click', closeModal); modal?.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+        document.querySelectorAll('.auth-tab').forEach(tab => { tab.addEventListener('click', () => { const target = tab.dataset.tab; document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active')); tab.classList.add('active'); document.getElementById(`${target}Form`).classList.add('active'); }); });
+
+        document.getElementById('newsletterForm')?.addEventListener('submit', e => { e.preventDefault(); showNotification('Newsletter', 'Merci pour votre inscription !', 'success'); e.target.reset(); });
+        document.getElementById('loginForm')?.addEventListener('submit', e => { e.preventDefault(); showNotification('Connexion', 'Connexion réussie !', 'success'); setTimeout(closeModal, 1500); });
+        document.getElementById('registerForm')?.addEventListener('submit', e => { e.preventDefault(); const pwd = e.target.querySelectorAll('input[type="password"]'); if(pwd[0] && pwd[1] && pwd[0].value !== pwd[1].value) { showNotification('Erreur', 'Les mots de passe ne correspondent pas', 'error'); return; } showNotification('Inscription', 'Compte créé avec succès !', 'success'); document.querySelector('[data-tab="login"]').click(); });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('visible', window.scrollY > 300); });
+        backToTop.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeSidebar(); } });
+
+        // Init
+        renderProducts();
+        window.filterProducts = filterProducts;
+        window.addToCart = addToCart;
+        window.addToWishlist = addToWishlist;
+        window.requestTestDrive = requestTestDrive;
+        window.toggleSubmenu = toggleSubmenu;
+        window.searchProducts = searchProducts;
+        
+        console.log('🚗 Paname Auto-Moto - Menu et recherche fonctionnels !');
+        console.log('🔍 Tapez: Toyota, Honda, Yamaha, BMW, Harley, 4500000...');
+    </script>
+</body>
+</html>

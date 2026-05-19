@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Paname Store - Votre boutique d'ordinateurs portables, desktops et accessoires high-tech à Yaoundé, Cameroun.">
+    <meta name="keywords" content="ordinateurs portables, desktops, gaming, high-tech, Yaoundé, Cameroun">
+    <meta name="author" content="Le Paname Service">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Paname Store - Ordinateurs & High-Tech | Le Paname Service</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-black: #0a0a0a; --secondary-black: #111111; --dark-gray: #1a1a1a;
+            --gold: #D4AF37; --gold-light: #F4D03F; --gold-dark: #B8960C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --white: #ffffff; --white-off: #f8f9fa; --gray-light: #e9ecef;
+            --gray-medium: #6c757d; --text-dark: #212529; --text-gray: #495057;
+            --success: #28a745; --danger: #dc3545;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.04); --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12); --gold-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --header-height: 60px; --container-padding: 1rem; --container-max-width: 1280px;
+            --border-radius: 0.5rem; --border-radius-lg: 0.75rem; --border-radius-xl: 1rem; --border-radius-full: 9999px;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-sans); color: var(--text-dark); background-color: var(--white); line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+        .container { max-width: var(--container-max-width); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+
+        /* Header Top */
+        .header-top { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); color: var(--white); padding: 0.5rem 0; border-bottom: 2px solid var(--gold); font-size: 0.75rem; }
+        .header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+        .header-top-message { display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; }
+        .header-top-message i { color: var(--gold); }
+        .header-top-message span { color: var(--gold); font-weight: 700; }
+        .customer-service { display: flex; align-items: center; gap: 1rem; }
+        .service-item { display: flex; align-items: center; gap: 0.5rem; }
+        .service-item i { font-size: 0.875rem; color: var(--gold); }
+        .service-info h4 { font-size: 0.625rem; font-weight: 500; opacity: 0.8; }
+        .service-info a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.688rem; transition: var(--transition); }
+        .service-info a:hover { color: var(--gold); }
+
+        /* Header Main */
+        .header-main { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-main .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-height); padding: 0.5rem var(--container-padding); flex-wrap: wrap; }
+        .logo { flex-shrink: 0; }
+        .logo img { height: 45px; width: auto; transition: var(--transition); }
+        .logo img:hover { transform: scale(1.02); }
+        .search-wrapper { flex: 1; max-width: 450px; min-width: 200px; }
+        .search-form { display: flex; border: 2px solid var(--gray-light); border-radius: var(--border-radius-full); overflow: hidden; transition: var(--transition); width: 100%; }
+        .search-form:focus-within { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .search-input { flex: 1; padding: 0.6rem 1rem; border: none; outline: none; font-size: 0.813rem; min-width: 0; width: 100%; }
+        .search-btn { background: var(--gold-gradient); border: none; padding: 0.6rem 1.2rem; cursor: pointer; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 0.5rem; font-size: 0.813rem; white-space: nowrap; flex-shrink: 0; }
+        .search-btn span { display: inline; }
+        .search-btn:hover { opacity: 0.9; }
+        .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+        .action-btn { position: relative; width: 42px; height: 42px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--gray-light); cursor: pointer; transition: var(--transition); color: var(--text-dark); font-size: 1.125rem; text-decoration: none; }
+        .action-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--primary-black); transform: translateY(-2px); }
+        .cart-badge, .wishlist-badge { position: absolute; top: -5px; right: -5px; background: var(--gold-gradient); color: var(--primary-black); font-size: 0.563rem; font-weight: 800; min-width: 16px; height: 16px; border-radius: var(--border-radius-full); display: flex; align-items: center; justify-content: center; padding: 0 3px; border: 1px solid var(--white); }
+
+        /* Navigation */
+        .nav-wrapper { background: var(--white); border-bottom: 1px solid var(--gray-light); position: sticky; top: var(--header-height); z-index: 999; }
+        .nav-container { display: flex; align-items: center; gap: 1rem; padding: 0.5rem var(--container-padding); position: relative; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; z-index: 2001; position: relative; }
+        .hamburger span { display: block; width: 26px; height: 2.5px; background: var(--primary-black); border-radius: 2px; transition: var(--transition); transform-origin: center; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .main-nav { flex: 1; }
+        .nav-list { display: flex; list-style: none; gap: 0; flex-wrap: wrap; }
+        .nav-item { position: relative; }
+        .nav-link { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.75rem 1rem; color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.813rem; transition: var(--transition); border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--white); min-width: 220px; box-shadow: var(--shadow-lg); border-radius: var(--border-radius); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition); z-index: 100; border: 1px solid var(--gray-light); }
+        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: block; padding: 0.7rem 1.2rem; color: var(--text-dark); text-decoration: none; transition: var(--transition); font-size: 0.813rem; }
+        .dropdown-item:hover { background: rgba(212, 175, 55, 0.1); color: var(--gold-dark); padding-left: 1.5rem; }
+
+        /* Overlay */
+        .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1999; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .menu-overlay.active { display: block; opacity: 1; }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 380px; height: 100vh; height: 100dvh; background: var(--white); box-shadow: var(--shadow-lg); z-index: 2000; transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; display: flex; flex-direction: column; }
+        .mobile-sidebar.active { left: 0; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; background: var(--primary-black); color: var(--gold); flex-shrink: 0; border-bottom: 2px solid var(--gold); }
+        .sidebar-header h3 { font-size: 1.1rem; font-family: var(--font-serif); display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+        .sidebar-close { background: rgba(255,255,255,0.1); border: none; font-size: 1.25rem; color: var(--gold); cursor: pointer; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
+        .sidebar-close:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-search { padding: 1rem 1.2rem; border-bottom: 1px solid var(--gray-light); flex-shrink: 0; }
+        .sidebar-search .search-form { border: 1px solid var(--gray-light); display: flex; border-radius: var(--border-radius-full); overflow: hidden; width: 100%; }
+        .sidebar-search .search-input { flex: 1; padding: 0.6rem 1rem; border: none; outline: none; font-size: 0.85rem; min-width: 0; width: 100%; }
+        .sidebar-search .search-btn { background: var(--gold-gradient); border: none; padding: 0.6rem 1rem; cursor: pointer; color: var(--primary-black); font-size: 0.9rem; flex-shrink: 0; }
+        .sidebar-nav-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0.5rem 0; }
+        .sidebar-nav { list-style: none; padding: 0; margin: 0; }
+        .sidebar-nav-item { border-bottom: 1px solid var(--gray-light); }
+        .sidebar-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.2rem; color: var(--text-dark); text-decoration: none; transition: var(--transition); font-weight: 500; cursor: pointer; font-size: 0.9rem; -webkit-tap-highlight-color: transparent; user-select: none; width: 100%; }
+        .sidebar-nav-link:hover, .sidebar-nav-link:active { background: rgba(212, 175, 55, 0.08); color: var(--gold-dark); }
+        .sidebar-nav-link span { display: flex; align-items: center; gap: 0.85rem; flex: 1; }
+        .sidebar-nav-link span i { width: 26px; color: var(--gold-dark); font-size: 1rem; text-align: center; }
+        .sidebar-nav-link .chevron { font-size: 0.75rem; transition: transform 0.3s ease; color: var(--gray-medium); flex-shrink: 0; }
+        .sidebar-nav-link.expanded .chevron { transform: rotate(90deg); color: var(--gold-dark); }
+        .sidebar-submenu { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--white-off); border-left: 3px solid var(--gold); margin-left: 1.5rem; border-radius: 0 0.5rem 0.5rem 0; }
+        .sidebar-submenu.active { max-height: 600px; }
+        .sidebar-submenu-item { border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .sidebar-submenu-link { display: block; padding: 0.75rem 1rem 0.75rem 2rem; color: var(--text-gray); text-decoration: none; font-size: 0.85rem; transition: var(--transition); -webkit-tap-highlight-color: transparent; }
+        .sidebar-submenu-link:hover, .sidebar-submenu-link:active { color: var(--gold-dark); background: rgba(212, 175, 55, 0.05); padding-left: 2.2rem; }
+        .sidebar-submenu-link::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-right: 8px; opacity: 0.6; vertical-align: middle; }
+        .sidebar-footer { padding: 1rem 1.2rem; border-top: 1px solid var(--gray-light); background: var(--white-off); flex-shrink: 0; }
+        .sidebar-auth-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem; border-radius: var(--border-radius); background: var(--primary-black); color: var(--gold); border: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); margin-bottom: 0.75rem; }
+        .sidebar-auth-btn:hover { background: var(--gold); color: var(--primary-black); }
+        .sidebar-contact { margin-top: 0.75rem; }
+        .sidebar-contact-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; color: var(--text-gray); font-size: 0.8rem; }
+        .sidebar-contact-item i { color: var(--gold-dark); width: 20px; font-size: 0.85rem; text-align: center; }
+        .sidebar-social { display: flex; gap: 10px; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-light); }
+        .sidebar-social-link { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gray-light); display: flex; align-items: center; justify-content: center; color: var(--gold-dark); text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
+        .sidebar-social-link:hover { background: var(--primary-black); border-color: var(--primary-black); color: var(--gold); }
+
+        /* Hero Section */
+        .store-hero { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); padding: 3rem 0; position: relative; overflow: hidden; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+        .hero-text h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--white); font-family: var(--font-serif); }
+        .hero-text h1 span { color: var(--gold); }
+        .hero-text p { font-size: 1rem; color: var(--gray-light); margin-bottom: 2rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--gold-gradient); color: var(--primary-black); text-decoration: none; border-radius: var(--border-radius-full); font-weight: 700; transition: var(--transition); border: none; cursor: pointer; font-size: 0.875rem; }
+        .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+        .btn-outline:hover { background: var(--gold-gradient); color: var(--primary-black); }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--gold-shadow); }
+        .hero-image img { width: 100%; border-radius: var(--border-radius-xl); box-shadow: var(--shadow-lg); border: 3px solid var(--gold); }
+
+        /* Categories */
+        .category-section { padding: 3rem 0; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .section-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; font-family: var(--font-serif); position: relative; padding-bottom: 0.5rem; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold-gradient); }
+        .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .category-card { background: var(--white); border-radius: var(--border-radius-lg); padding: 1.5rem; text-align: center; text-decoration: none; color: var(--text-dark); transition: var(--transition); border: 1px solid var(--gray-light); box-shadow: var(--shadow-sm); cursor: pointer; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .category-icon { width: 70px; height: 70px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .category-icon i { font-size: 2rem; color: var(--primary-black); }
+        .category-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .category-card p { font-size: 0.75rem; color: var(--gray-medium); }
+
+        /* Products */
+        .products-section { padding: 3rem 0; background: var(--white-off); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .product-card { background: var(--white); border-radius: var(--border-radius-lg); overflow: hidden; transition: var(--transition); border: 1px solid var(--gray-light); box-shadow: var(--shadow-sm); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .product-image { position: relative; height: 220px; overflow: hidden; background: var(--white-off); }
+        .product-image img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; transition: transform 0.5s ease; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-badge { position: absolute; top: 10px; left: 10px; background: var(--gold-gradient); padding: 0.25rem 0.75rem; border-radius: var(--border-radius-full); font-size: 0.688rem; font-weight: 700; z-index: 2; }
+        .product-wishlist { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); border: 1px solid var(--gray-light); color: var(--gray-medium); }
+        .product-wishlist:hover { background: var(--gold); color: var(--primary-black); border-color: var(--gold); }
+        .product-info { padding: 1rem; }
+        .product-category { font-size: 0.688rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; font-weight: 600; }
+        .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+        .product-specs { margin-bottom: 0.75rem; }
+        .spec { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-gray); margin-bottom: 0.25rem; }
+        .spec i { color: var(--gold); width: 16px; font-size: 0.75rem; }
+        .product-price { font-size: 1.25rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 0.75rem; }
+        .old-price { font-size: 0.813rem; color: var(--gray-medium); text-decoration: line-through; margin-left: 0.5rem; font-weight: normal; }
+        .product-actions { display: flex; gap: 0.5rem; }
+        .product-actions .btn { flex: 1; padding: 0.5rem; font-size: 0.75rem; justify-content: center; }
+
+        /* Promo Banner */
+        .promo-banner { background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%); padding: 3rem 0; margin: 2rem 0; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
+        .promo-content { text-align: center; color: var(--white); }
+        .promo-content h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-family: var(--font-serif); margin-bottom: 1rem; }
+        .promo-content h2 span { color: var(--gold); }
+        .promo-content p { margin-bottom: 1.5rem; opacity: 0.9; }
+
+        /* Features */
+        .features-section { padding: 3rem 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+        .feature-card { text-align: center; padding: 1.5rem; background: var(--white); border-radius: var(--border-radius-lg); border: 1px solid var(--gray-light); transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-3px); box-shadow: var(--gold-shadow); border-color: var(--gold); }
+        .feature-icon { width: 60px; height: 60px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .feature-icon i { font-size: 1.5rem; color: var(--primary-black); }
+        .feature-card h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .feature-card p { font-size: 0.688rem; color: var(--gray-medium); }
+
+        /* Newsletter */
+        .newsletter-section { background: var(--white-off); padding: 3rem 0; }
+        .newsletter-wrapper { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .newsletter-content { display: flex; align-items: center; gap: 1rem; }
+        .newsletter-icon { width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .newsletter-icon i { font-size: 1.25rem; color: var(--primary-black); }
+        .newsletter-text h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .newsletter-text p { font-size: 0.813rem; color: var(--text-gray); }
+        .newsletter-form { display: flex; gap: 0.5rem; min-width: 350px; }
+        .newsletter-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid var(--gray-light); border-radius: var(--border-radius-full); font-size: 0.813rem; outline: none; }
+        .newsletter-input:focus { border-color: var(--gold); box-shadow: var(--gold-shadow); }
+        .newsletter-btn { padding: 0.7rem 1.5rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius-full); font-weight: 600; cursor: pointer; font-size: 0.813rem; white-space: nowrap; }
+
+        /* Footer */
+        .footer { background: var(--primary-black); color: var(--white); padding: 3rem 0 0; margin-top: auto; border-top: 3px solid var(--gold); }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .footer-about p { color: var(--gray-light); margin: 1rem 0; font-size: 0.813rem; line-height: 1.6; }
+        .footer-logo { margin-bottom: 1rem; }
+        .footer-logo img { height: 45px; width: auto; }
+        .footer-title { font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.5rem; color: var(--gold); }
+        .footer-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--gold-gradient); }
+        .footer-links { list-style: none; }
+        .footer-link { margin-bottom: 0.7rem; }
+        .footer-link a { color: var(--gray-light); text-decoration: none; transition: var(--transition); font-size: 0.813rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .footer-link a:hover { color: var(--gold); transform: translateX(5px); }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.7rem; color: var(--gray-light); font-size: 0.813rem; }
+        .contact-item i { color: var(--gold); width: 20px; }
+        .social-links { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .social-link { width: 36px; height: 36px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; transition: var(--transition); }
+        .social-link:hover { background: var(--gold); color: var(--primary-black); transform: translateY(-3px); }
+        .footer-bottom { padding: 1.5rem 0; }
+        .footer-bottom .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .copyright { font-size: 0.75rem; color: var(--gray-light); }
+        .copyright a { color: var(--gold); text-decoration: none; }
+        .payment-methods { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .payment-methods img { height: 30px; width: auto; background: var(--white); padding: 0.25rem 0.5rem; border-radius: var(--border-radius); transition: var(--transition); }
+
+        /* Floating Buttons */
+        .floating-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 0.5rem; z-index: 998; }
+        .whatsapp-btn { width: 50px; height: 50px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg); transition: var(--transition); }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+        .whatsapp-btn img { width: 28px; height: 28px; }
+        .back-to-top { width: 50px; height: 50px; border-radius: 50%; background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--primary-black); font-size: 1.125rem; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); }
+
+        /* Modal */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 3000; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--white); border-radius: var(--border-radius-lg); padding: 2rem; max-width: 440px; width: 90%; position: relative; transform: scale(0.95); transition: var(--transition); }
+        .modal.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.25rem; cursor: pointer; }
+        .auth-tabs { display: flex; gap: 1rem; margin: 1rem 0 1.5rem; border-bottom: 2px solid var(--gray-light); }
+        .auth-tab { flex: 1; padding: 0.7rem; background: none; border: none; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; font-size: 0.875rem; }
+        .auth-tab.active { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.35rem; font-weight: 500; font-size: 0.813rem; }
+        .form-group input { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--gray-light); border-radius: var(--border-radius); font-size: 0.875rem; }
+        .auth-submit { width: 100%; padding: 0.8rem; background: var(--gold-gradient); border: none; border-radius: var(--border-radius); font-weight: 700; cursor: pointer; margin-top: 0.5rem; }
+        .notification-container { position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 0.5rem; }
+        .notification { background: var(--white); padding: 0.8rem 1.2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 0.75rem; transform: translateX(400px); transition: transform 0.3s ease; max-width: 360px; border-left: 4px solid; }
+        .notification.show { transform: translateX(0); }
+        .notification-success { border-left-color: var(--success); }
+        .notification-error { border-left-color: var(--danger); }
+
+        /* Responsive */
+        @media (max-width: 992px) { 
+            .category-grid { grid-template-columns: repeat(2, 1fr); } 
+            .features-grid { grid-template-columns: repeat(3, 1fr); } 
+            .footer-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 860px) {
+            .hamburger { display: flex; }
+            .main-nav { display: none; }
+            .header-main .container { flex-direction: column; align-items: stretch; gap: 0.75rem; padding: 0.5rem var(--container-padding); }
+            .header-main .container .logo { order: 1; align-self: flex-start; }
+            .header-main .container .header-actions { order: 2; align-self: flex-end; margin-top: -50px; }
+            .header-main .container .search-wrapper { order: 3; max-width: 100%; width: 100%; }
+            .search-btn span { display: none; }
+            .search-btn { padding: 0.6rem 1rem; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .newsletter-wrapper { flex-direction: column; text-align: center; }
+            .newsletter-content { flex-direction: column; }
+            .newsletter-form { min-width: 100%; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-title::after { left: 50%; transform: translateX(-50%); }
+            .footer-links { text-align: center; }
+            .footer-link a { justify-content: center; }
+            .contact-item { justify-content: center; }
+            .social-links { justify-content: center; }
+            .header-actions { gap: 0.5rem; }
+            .action-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .header-top .container { flex-direction: column; text-align: center; }
+            .customer-service { justify-content: center; flex-wrap: wrap; }
+            .mobile-sidebar { max-width: 100%; width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .header-main .container { padding: 0.4rem 0.75rem; }
+            .header-main .container .header-actions { margin-top: -42px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: 1fr; }
+            .header-actions { gap: 0.4rem; }
+            .action-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+            .logo img { height: 38px; }
+            .search-wrapper { max-width: 100%; min-width: 100%; }
+            .search-input { font-size: 0.75rem; }
+            .sidebar-header h3 { font-size: 1rem; }
+            .sidebar-nav-link { font-size: 0.85rem; padding: 0.8rem 1rem; }
+            .sidebar-submenu-link { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-message"><i class="fas fa-crown"></i><p>Bienvenue chez <span>Le Paname Service</span> | Livraison gratuite dès 5000 Fcfa</p></div>
+            <div class="customer-service">
+                <div class="service-item"><i class="fas fa-headset"></i><div class="service-info"><h4>Service Client</h4><p><a href="tel:+237657715482">+237 657 71 54 82</a></p></div></div>
+                <div class="service-item"><i class="fas fa-envelope"></i><div class="service-info"><h4>Email</h4><p><a href="mailto:lepanameservice@gmail.com">lepanameservice@gmail.com</a></p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Main -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo"><a href="../index.html"><img src="assets/logoPANSERV.png" alt="Le Paname Service"></a></div>
+            <div class="header-actions">
+                <button class="action-btn" data-modal="auth" aria-label="Mon compte"><i class="far fa-user"></i></button>
+                <a href="wishlist.html" class="action-btn" aria-label="Favoris"><i class="far fa-heart"></i><span class="wishlist-badge">0</span></a>
+                <a href="cart.html" class="action-btn" aria-label="Panier"><i class="fas fa-shopping-bag"></i><span class="cart-badge">0</span></a>
+            </div>
+            <div class="search-wrapper">
+                <form class="search-form" id="desktopSearchForm">
+                    <input type="search" class="search-input" placeholder="Rechercher un produit..." id="desktopSearchInput" aria-label="Rechercher">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i><span>Rechercher</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper">
+        <div class="container nav-container">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="paname-store.html" class="nav-link active">Paname Store</a></li>
+                    <li class="nav-item"><a href="paname-market.html" class="nav-link">Paname Market</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="pages/panamewedding.html" class="dropdown-item">Paname Wedding</a>
+                            <a href="pages/panamehouse.html" class="dropdown-item">Paname House</a>
+                            <a href="pages/panametravel.html" class="dropdown-item">Paname Travel</a>
+                            <a href="pages/panameevent.html" class="dropdown-item">Paname Event</a>
+                            <a href="pages/panameproduction.html" class="dropdown-item">Paname Production</a>
+                            <a href="pages/panamesecurity.html" class="dropdown-item">Paname Security</a>
+                            <a href="pages/panameluxury.html" class="dropdown-item">Paname Luxury</a>
+                            <a href="pages/livraisonexpress.html" class="dropdown-item">Livraison Express</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="sante.html" class="nav-link">Santé</a></li>
+                    <li class="nav-item"><a href="auto-moto.html" class="nav-link">Auto-Moto</a></li>
+                    <li class="nav-item"><a href="montres-bijoux.html" class="nav-link">Montres & Bijoux</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Overlay + Mobile Sidebar -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header"><h3><i class="fas fa-crown"></i> Le Paname Service</h3><button class="sidebar-close" id="sidebarCloseBtn" aria-label="Fermer"><i class="fas fa-times"></i></button></div>
+        <div class="sidebar-search">
+            <form class="search-form" id="mobileSearchForm">
+                <input type="search" class="search-input" placeholder="Rechercher un produit..." id="mobileSearchInput">
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="sidebar-nav-scroll">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item"><a href="../index.html" class="sidebar-nav-link"><span><i class="fas fa-home"></i> Accueil</span></a></li>
+                <li class="sidebar-nav-item"><a href="paname-store.html" class="sidebar-nav-link active"><span><i class="fas fa-laptop"></i> Paname Store</span></a></li>
+                <li class="sidebar-nav-item"><a href="paname-market.html" class="sidebar-nav-link"><span><i class="fas fa-shopping-cart"></i> Paname Market</span></a></li>
+                <li class="sidebar-nav-item">
+                    <div class="sidebar-nav-link" onclick="toggleSubmenu(this)" role="button" tabindex="0"><span><i class="fas fa-concierge-bell"></i> Services</span><i class="fas fa-chevron-right chevron"></i></div>
+                    <ul class="sidebar-submenu">
+                        <li class="sidebar-submenu-item"><a href="pages/panamewedding.html" class="sidebar-submenu-link">Paname Wedding</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panamehouse.html" class="sidebar-submenu-link">Paname House</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panametravel.html" class="sidebar-submenu-link">Paname Travel</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameevent.html" class="sidebar-submenu-link">Paname Event</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameproduction.html" class="sidebar-submenu-link">Paname Production</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panamesecurity.html" class="sidebar-submenu-link">Paname Security</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/panameluxury.html" class="sidebar-submenu-link">Paname Luxury</a></li>
+                        <li class="sidebar-submenu-item"><a href="pages/livraisonexpress.html" class="sidebar-submenu-link">Livraison Express</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item"><a href="sante.html" class="sidebar-nav-link"><span><i class="fas fa-heartbeat"></i> Santé</span></a></li>
+                <li class="sidebar-nav-item"><a href="auto-moto.html" class="sidebar-nav-link"><span><i class="fas fa-car"></i> Auto-Moto</span></a></li>
+                <li class="sidebar-nav-item"><a href="montres-bijoux.html" class="sidebar-nav-link"><span><i class="fas fa-gem"></i> Montres & Bijoux</span></a></li>
+                <li class="sidebar-nav-item"><a href="contact.html" class="sidebar-nav-link"><span><i class="fas fa-envelope"></i> Contact</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <button class="sidebar-auth-btn" data-modal="auth"><i class="far fa-user"></i><span>Mon compte</span></button>
+            <div class="sidebar-contact">
+                <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div>
+                <div class="sidebar-contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div>
+            </div>
+            <div class="sidebar-social">
+                <a href="https://www.facebook.com/profile.php?id=61557575415489" class="sidebar-social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/lepanameservice237" class="sidebar-social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+237657715482" class="sidebar-social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@lepanameservice237" class="sidebar-social-link"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="store-hero"><div class="container"><div class="hero-content">
+        <div class="hero-text"><h1><span>Paname Store</span><br>La puissance à votre portée</h1><p>Ordinateurs portables, desktops et accessoires high-tech. Performance garantie, assistance locale et meilleur rapport qualité-prix.</p>
+            <div class="hero-buttons"><a href="#products" class="btn"><i class="fas fa-laptop"></i> Voir les produits</a><a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Assistance</a></div></div>
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600" alt="Ordinateurs Paname Store"></div>
+    </div></div></section>
+
+    <!-- Categories -->
+    <section class="category-section"><div class="container">
+        <div class="section-header"><h2 class="section-title">Catégories</h2><a href="#" class="section-link" style="color:var(--gold-dark);font-size:0.875rem;">Voir tout <i class="fas fa-arrow-right"></i></a></div>
+        <div class="category-grid">
+            <div class="category-card" onclick="filterProducts('all')"><div class="category-icon"><i class="fas fa-laptop"></i></div><h3>Tous les produits</h3><p>Voir tout le catalogue</p></div>
+            <div class="category-card" onclick="filterProducts('laptop')"><div class="category-icon"><i class="fas fa-laptop-code"></i></div><h3>Laptops</h3><p>Portables performants</p></div>
+            <div class="category-card" onclick="filterProducts('desktop')"><div class="category-icon"><i class="fas fa-desktop"></i></div><h3>Desktops</h3><p>Puissance et fiabilité</p></div>
+            <div class="category-card" onclick="filterProducts('accessory')"><div class="category-icon"><i class="fas fa-mouse"></i></div><h3>Accessoires</h3><p>Souris, claviers, écrans</p></div>
+        </div>
+    </div></section>
+
+    <!-- Products -->
+    <section id="products" class="products-section"><div class="container">
+        <div class="section-header"><h2 class="section-title">Nos Produits</h2>
+            <div class="filter-buttons" style="display:flex;gap:0.5rem;">
+                <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.75rem;" onclick="filterProducts('all')">Tous</button>
+                <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.75rem;" onclick="filterProducts('laptop')">Laptops</button>
+                <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.75rem;" onclick="filterProducts('desktop')">Desktops</button>
+                <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.75rem;" onclick="filterProducts('accessory')">Accessoires</button>
+            </div>
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+    </div></section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner"><div class="container"><div class="promo-content">
+        <h2>Offre Spéciale <span>-30%</span> sur les Laptops Gaming</h2><p>Profitez de nos remises exceptionnelles sur une sélection d'ordinateurs gaming. Stock limité !</p><a href="#" class="btn"><i class="fas fa-tag"></i> J'en profite</a>
+    </div></div></section>
+
+    <!-- Features -->
+    <section class="features-section"><div class="container"><div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-truck"></i></div><h4>Livraison Gratuite</h4><p>Dès 5000 Fcfa à Yaoundé</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h4>Garantie 2 ans</h4><p>SAV local à Yaoundé</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div><h4>Paiement sécurisé</h4><p>Orange Money, MTN, PayPal</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h4>Support 24/7</h4><p>Assistance technique</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-store"></i></div><h4>Retrait en magasin</h4><p>-10% dès 10 000 Fcfa</p></div>
+    </div></div></section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section"><div class="container"><div class="newsletter-wrapper">
+        <div class="newsletter-content"><div class="newsletter-icon"><i class="fas fa-envelope-open-text"></i></div><div class="newsletter-text"><h3>Restez informé</h3><p>Recevez nos offres exclusives</p></div></div>
+        <form class="newsletter-form" id="newsletterForm"><input type="email" class="newsletter-input" placeholder="Votre adresse email" required><button type="submit" class="newsletter-btn">S'inscrire <i class="fas fa-paper-plane"></i></button></form>
+    </div></div></section>
+
+    <!-- Footer -->
+    <footer class="footer"><div class="container"><div class="footer-grid">
+        <div class="footer-about"><div class="footer-logo"><img src="assets/Logo_paname.jpeg-removebg-preview-1.png" alt="Le Paname Service"></div><p>Le Paname Service - Votre partenaire de confiance pour tous vos besoins en high-tech.</p><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Yaoundé, Cameroun</span></div></div>
+        <div><h4 class="footer-title">E-commerce</h4><ul class="footer-links"><li class="footer-link"><a href="../index.html"><i class="fas fa-chevron-right"></i>Accueil</a></li><li class="footer-link"><a href="paname-store.html"><i class="fas fa-chevron-right"></i>Paname Store</a></li><li class="footer-link"><a href="paname-market.html"><i class="fas fa-chevron-right"></i>Paname Market</a></li><li class="footer-link"><a href="sante.html"><i class="fas fa-chevron-right"></i>Santé</a></li><li class="footer-link"><a href="auto-moto.html"><i class="fas fa-chevron-right"></i>Auto-Moto</a></li><li class="footer-link"><a href="montres-bijoux.html"><i class="fas fa-chevron-right"></i>Montres & Bijoux</a></li></ul></div>
+        <div><h4 class="footer-title">Nos services</h4><ul class="footer-links"><li class="footer-link"><a href="pages/panamewedding.html"><i class="fas fa-chevron-right"></i>Paname Wedding</a></li><li class="footer-link"><a href="pages/panamehouse.html"><i class="fas fa-chevron-right"></i>Paname House</a></li><li class="footer-link"><a href="pages/panametravel.html"><i class="fas fa-chevron-right"></i>Paname Travel</a></li><li class="footer-link"><a href="pages/panameevent.html"><i class="fas fa-chevron-right"></i>Paname Event</a></li><li class="footer-link"><a href="pages/panameproduction.html"><i class="fas fa-chevron-right"></i>Paname Production</a></li><li class="footer-link"><a href="pages/panamesecurity.html"><i class="fas fa-chevron-right"></i>Paname Security</a></li><li class="footer-link"><a href="pages/livraisonexpress.html"><i class="fas fa-chevron-right"></i>Livraison Express</a></li></ul></div>
+        <div><h4 class="footer-title">Contact</h4><div class="contact-item"><i class="fas fa-phone"></i><span>+237 657 71 54 82</span></div><div class="contact-item"><i class="fas fa-phone"></i><span>+237 676 39 18 16</span></div><div class="contact-item"><i class="fas fa-envelope"></i><span>lepanameservice@gmail.com</span></div><div class="social-links"><a href="https://www.facebook.com/profile.php?id=61557575415489" class="social-link"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/lepanameservice237" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://wa.me/+237657715482" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="https://www.tiktok.com/@lepanameservice237" class="social-link"><i class="fab fa-tiktok"></i></a></div></div>
+    </div><div class="footer-bottom"><div class="container"><div class="copyright">&copy; 2025 <a href="../index.html">Le Paname Service</a>. Tous droits réservés.</div><div class="payment-methods"><img src="assets/om.jpg" alt="Orange Money"><img src="assets/momo.jpg" alt="MTN Mobile Money"><img src="assets/paypal.jpg" alt="PayPal"><img src="assets/image/payment-1.png" alt="Visa"><img src="assets/image/payment-2.png" alt="Mastercard"></div></div></div></div></footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+237657715482" class="whatsapp-btn" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+        <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Modal Auth -->
+    <div class="modal" id="authModal"><div class="modal-content"><button class="modal-close" data-modal-close><i class="fas fa-times"></i></button><div class="modal-header"><h2>Bienvenue</h2><p>Connectez-vous ou créez un compte</p></div><div class="auth-tabs"><button class="auth-tab active" data-tab="login">Connexion</button><button class="auth-tab" data-tab="register">Inscription</button></div><form class="auth-form active" id="loginForm"><div class="form-group"><label>Email</label><input type="email" required></div><div class="form-group"><label>Mot de passe</label><input type="password" required></div><button type="submit" class="auth-submit">Se connecter</button></form><form class="auth-form" id="registerForm"><div class="form-group"><label>Nom complet</label><input type="text" required></div><div class="form-group"><label>Email</label><input type="email" required></div><div class="form-group"><label>Téléphone</label><input type="tel" required></div><div class="form-group"><label>Mot de passe</label><input type="password" required></div><div class="form-group"><label>Confirmer</label><input type="password" required></div><button type="submit" class="auth-submit">S'inscrire</button></form></div></div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script>
+        // ==================== PRODUCTS DATABASE ====================
+        const products = [
+            { id: 'laptop-001', name: 'Acer Aspire 5', category: 'laptop', specs: 'Intel Core i5-1135G7 / 8GB RAM / 512GB SSD', price: 450000, oldPrice: 550000, image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400', badge: '-18%' },
+            { id: 'laptop-002', name: 'Dell XPS 13', category: 'laptop', specs: 'Intel Core i7-1165G7 / 16GB RAM / 1TB SSD', price: 850000, oldPrice: 1050000, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400', badge: '-19%' },
+            { id: 'laptop-003', name: 'HP Pavilion 15', category: 'laptop', specs: 'AMD Ryzen 5 / 8GB RAM / 512GB SSD', price: 380000, oldPrice: 480000, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f4045ed?w=400', badge: '-21%' },
+            { id: 'laptop-004', name: 'Lenovo ThinkPad X1', category: 'laptop', specs: 'Intel Core i7 / 16GB RAM / 512GB SSD', price: 750000, oldPrice: 900000, image: 'https://images.unsplash.com/photo-1588872657578-7efd1f4045ed?w=400', badge: '-17%' },
+            { id: 'laptop-005', name: 'Asus TUF Gaming F15', category: 'laptop', specs: 'Intel Core i7 / 16GB RAM / 512GB SSD / RTX 3060', price: 650000, oldPrice: 820000, image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400', badge: '-21%' },
+            { id: 'laptop-006', name: 'MSI Stealth', category: 'laptop', specs: 'Intel Core i9 / 32GB RAM / 1TB SSD / RTX 3080', price: 1450000, oldPrice: 1800000, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400', badge: '-19%' },
+            { id: 'laptop-007', name: 'Apple MacBook Air', category: 'laptop', specs: 'Apple M2 / 8GB RAM / 256GB SSD', price: 950000, oldPrice: 1150000, image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400', badge: '-17%' },
+            { id: 'laptop-008', name: 'Microsoft Surface Laptop', category: 'laptop', specs: 'Intel Core i5 / 8GB RAM / 256GB SSD', price: 680000, oldPrice: 850000, image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400', badge: '-20%' },
+            { id: 'desktop-001', name: 'Desktop Pro Intel i5', category: 'desktop', specs: 'Intel Core i5-10400 / 16GB RAM / 1TB SSD', price: 380000, oldPrice: 450000, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', badge: '-16%' },
+            { id: 'desktop-002', name: 'Desktop Gaming RTX', category: 'desktop', specs: 'AMD Ryzen 7 / 32GB RAM / 1TB NVMe / RTX 3060', price: 850000, oldPrice: 1100000, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', badge: '-23%' },
+            { id: 'desktop-003', name: 'iMac 24 pouces', category: 'desktop', specs: 'Apple M1 / 8GB RAM / 256GB SSD', price: 950000, oldPrice: 1150000, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400', badge: '-17%' },
+            { id: 'desktop-004', name: 'Desktop Pro i7', category: 'desktop', specs: 'Intel Core i7-11700 / 16GB RAM / 512GB SSD', price: 520000, oldPrice: 680000, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', badge: '-24%' },
+            { id: 'desktop-005', name: 'Mac Studio', category: 'desktop', specs: 'Apple M2 Ultra / 64GB RAM / 2TB SSD', price: 2850000, oldPrice: 3500000, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400', badge: '-19%' },
+            { id: 'desktop-006', name: 'Desktop Mini PC', category: 'desktop', specs: 'Intel Core i3 / 8GB RAM / 256GB SSD', price: 250000, oldPrice: 320000, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', badge: '-22%' },
+            { id: 'accessory-001', name: 'Souris Gamer RGB', category: 'accessory', specs: '16000 DPI / 7 boutons / RGB', price: 25000, oldPrice: 40000, image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400', badge: '-38%' },
+            { id: 'accessory-002', name: 'Clavier Mécanique', category: 'accessory', specs: 'Switch bleu / RGB / Antighosting', price: 55000, oldPrice: 85000, image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400', badge: '-35%' },
+            { id: 'accessory-003', name: 'Casque Gaming 7.1', category: 'accessory', specs: 'Son surround / Micro / RGB', price: 45000, oldPrice: 70000, image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400', badge: '-36%' },
+            { id: 'accessory-004', name: 'Webcam HD 1080p', category: 'accessory', specs: '1080p / Autofocus / Micro intégré', price: 35000, oldPrice: 55000, image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400', badge: '-36%' },
+            { id: 'accessory-005', name: 'Écran 24 pouces', category: 'accessory', specs: 'Full HD / 75Hz / IPS', price: 120000, oldPrice: 160000, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400', badge: '-25%' },
+            { id: 'accessory-006', name: 'Support ordinateur', category: 'accessory', specs: 'Réglable en hauteur / Aluminium', price: 35000, oldPrice: 50000, image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', badge: '-30%' }
+        ];
+
+        let cartCount = 0, wishlistCount = 0;
+        function formatPrice(p) { return p.toLocaleString() + ' Fcfa'; }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(p => `<div class="product-card"><div class="product-image"><span class="product-badge">${p.badge}</span><div class="product-wishlist" onclick="addToWishlist('${p.id}')"><i class="far fa-heart"></i></div><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-info"><div class="product-category">${p.category==='laptop'?'Ordinateur Portable':p.category==='desktop'?'Ordinateur de Bureau':'Accessoire informatique'}</div><h3 class="product-name">${p.name}</h3><div class="product-specs"><div class="spec"><i class="fas fa-microchip"></i>${p.specs}</div></div><div class="product-price">${formatPrice(p.price)}<span class="old-price">${formatPrice(p.oldPrice)}</span></div><div class="product-actions"><button class="btn" onclick="addToCart('${p.id}')"><i class="fas fa-shopping-cart"></i>Commander</button><button class="btn btn-outline" onclick="quickView('${p.id}')"><i class="fas fa-eye"></i>Détails</button></div></div></div>`).join('');
+        }
+
+        function filterProducts(cat) { renderProducts(cat); }
+        function quickView(id) { const p = products.find(x => x.id === id); showNotification(p.name, p.specs, 'success'); }
+        function addToCart(id) { cartCount++; updateCartCount(); showNotification('Panier', 'Article ajouté au panier', 'success'); }
+        function addToWishlist(id) { wishlistCount++; updateWishlistCount(); showNotification('Favoris', 'Produit ajouté aux favoris', 'success'); }
+        function updateCartCount() { document.querySelectorAll('.cart-badge').forEach(el => { el.textContent = cartCount; el.style.display = cartCount > 0 ? 'flex' : 'none'; }); }
+        function updateWishlistCount() { document.querySelectorAll('.wishlist-badge').forEach(el => { el.textContent = wishlistCount; el.style.display = wishlistCount > 0 ? 'flex' : 'none'; }); }
+        function showNotification(title, msg, type = 'success') { const c = document.getElementById('notificationContainer'); const n = document.createElement('div'); n.className = `notification notification-${type}`; n.innerHTML = `<i class="fas fa-${type==='success'?'check-circle':'info-circle'}"></i><div><strong>${title}</strong><p style="font-size:0.75rem;">${msg}</p></div><button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;"><i class="fas fa-times"></i></button>`; c.appendChild(n); setTimeout(() => n.classList.add('show'), 10); setTimeout(() => { n.classList.remove('show'); setTimeout(() => n.remove(), 300); }, 4000); }
+
+        // ==================== FONCTION DE RECHERCHE ====================
+        function searchProducts(query) {
+            if (!query || query.trim() === '') { renderProducts('all'); return; }
+            const term = query.toLowerCase().trim();
+            const filtered = products.filter(p => {
+                return p.name.toLowerCase().includes(term) || 
+                       p.category.toLowerCase().includes(term) || 
+                       p.specs.toLowerCase().includes(term) ||
+                       p.price.toString().includes(term);
+            });
+            const grid = document.getElementById('productsGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-medium);"><i class="fas fa-search" style="font-size:3rem;display:block;opacity:0.3;margin-bottom:1rem;"></i><p style="font-size:1.1rem;font-weight:600;">Aucun produit trouvé</p></div>`;
+            } else {
+                grid.innerHTML = filtered.map(p => `<div class="product-card"><div class="product-image"><span class="product-badge">${p.badge}</span><div class="product-wishlist" onclick="addToWishlist('${p.id}')"><i class="far fa-heart"></i></div><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-info"><div class="product-category">${p.category==='laptop'?'Ordinateur Portable':p.category==='desktop'?'Ordinateur de Bureau':'Accessoire informatique'}</div><h3 class="product-name">${p.name}</h3><div class="product-specs"><div class="spec"><i class="fas fa-microchip"></i>${p.specs}</div></div><div class="product-price">${formatPrice(p.price)}<span class="old-price">${formatPrice(p.oldPrice)}</span></div><div class="product-actions"><button class="btn" onclick="addToCart('${p.id}')"><i class="fas fa-shopping-cart"></i>Commander</button></div></div></div>`).join('');
+            }
+            showNotification('Recherche', `${filtered.length} produit(s) trouvé(s)`, 'success');
+        }
+
+        // Recherche Desktop
+        document.getElementById('desktopSearchForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            searchProducts(document.getElementById('desktopSearchInput').value.trim());
+        });
+
+        // Recherche Mobile
+        document.getElementById('mobileSearchForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const q = document.getElementById('mobileSearchInput').value.trim();
+            if (q) { searchProducts(q); closeSidebar(); }
+        });
+
+        // ==================== MOBILE MENU ====================
+        const hamburgerBtn = document.getElementById('hamburgerBtn'), mobileSidebar = document.getElementById('mobileSidebar'), menuOverlay = document.getElementById('menuOverlay'), sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+        function openSidebar() { mobileSidebar?.classList.add('active'); menuOverlay?.classList.add('active'); hamburgerBtn?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { mobileSidebar?.classList.remove('active'); menuOverlay?.classList.remove('active'); hamburgerBtn?.classList.remove('active'); document.body.style.overflow = ''; document.querySelectorAll('.sidebar-nav-link.expanded').forEach(l => { l.classList.remove('expanded'); const s = l.nextElementSibling; if(s) s.classList.remove('active'); }); }
+        hamburgerBtn?.addEventListener('click', () => { mobileSidebar.classList.contains('active') ? closeSidebar() : openSidebar(); });
+        sidebarCloseBtn?.addEventListener('click', closeSidebar);
+        menuOverlay?.addEventListener('click', closeSidebar);
+
+        function toggleSubmenu(el) { const sub = el.nextElementSibling, isExp = el.classList.contains('expanded'); document.querySelectorAll('.sidebar-nav-link.expanded').forEach(l => { if(l !== el) { l.classList.remove('expanded'); const s = l.nextElementSibling; if(s) s.classList.remove('active'); } }); if(isExp) { el.classList.remove('expanded'); if(sub) sub.classList.remove('active'); } else { el.classList.add('expanded'); if(sub) sub.classList.add('active'); } }
+
+        // ==================== MODAL ====================
+        const modal = document.getElementById('authModal'), modalTriggers = document.querySelectorAll('[data-modal="auth"]'), modalClose = document.querySelector('[data-modal-close]');
+        function openModal() { modal?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal?.classList.remove('active'); document.body.style.overflow = ''; }
+        modalTriggers.forEach(t => t.addEventListener('click', openModal)); modalClose?.addEventListener('click', closeModal); modal?.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+        document.querySelectorAll('.auth-tab').forEach(tab => { tab.addEventListener('click', () => { const target = tab.dataset.tab; document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active')); tab.classList.add('active'); document.getElementById(`${target}Form`)?.classList.add('active'); }); });
+        document.getElementById('newsletterForm')?.addEventListener('submit', e => { e.preventDefault(); showNotification('Newsletter', 'Merci pour votre inscription !', 'success'); e.target.reset(); });
+        document.getElementById('loginForm')?.addEventListener('submit', e => { e.preventDefault(); showNotification('Connexion', 'Connexion réussie !', 'success'); setTimeout(closeModal, 1500); });
+        document.getElementById('registerForm')?.addEventListener('submit', e => { e.preventDefault(); const pwds = e.target.querySelectorAll('input[type="password"]'); if(pwds[0] && pwds[1] && pwds[0].value !== pwds[1].value) { showNotification('Erreur', 'Mots de passe différents', 'error'); return; } showNotification('Inscription', 'Compte créé !', 'success'); document.querySelector('[data-tab="login"]').click(); });
+
+        // ==================== BACK TO TOP ====================
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { if(backToTop) backToTop.classList.toggle('visible', window.scrollY > 300); });
+        backToTop?.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        // ==================== KEYBOARD & SWIPE ====================
+        document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModal(); closeSidebar(); } });
+        let touchStartX = 0;
+        mobileSidebar.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        mobileSidebar.addEventListener('touchend', (e) => { if(touchStartX - e.changedTouches[0].screenX > 80) closeSidebar(); });
+
+        // ==================== INIT ====================
+        renderProducts('all');
+        window.filterProducts = filterProducts;
+        window.addToCart = addToCart;
+        window.addToWishlist = addToWishlist;
+        window.quickView = quickView;
+        window.toggleSubmenu = toggleSubmenu;
+        window.searchProducts = searchProducts;
+        console.log('👑 Paname Store - Menu responsive + Recherche prêts !');
+    </script>
+</body>
+</html>
